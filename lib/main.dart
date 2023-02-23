@@ -12,6 +12,11 @@ class ItpsmMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ITPSM Mobile',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.deepPurple[900],
+        brightness: Brightness.light
+      ),
       routes: {
         LoginScreen.routeName: (context) => const LoginScreen()
       },

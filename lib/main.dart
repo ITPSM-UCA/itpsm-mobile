@@ -15,7 +15,18 @@ class ItpsmMobile extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.deepPurple[900],
-        brightness: Brightness.light
+        brightness: Brightness.light,
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(
+            fontSize: 34
+          ),
+          titleMedium: TextStyle(
+            fontSize: 24
+          ),
+          titleSmall: TextStyle(
+            fontSize: 20
+          ),
+        )
       ),
       routes: {
         LoginScreen.routeName: (context) => const LoginScreen()

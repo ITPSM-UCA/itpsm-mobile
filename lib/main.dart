@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:itpsm_mobile/screens/login/login_screen.dart';
+import 'package:itpsm_mobile/screens/students/academic_record_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
@@ -46,7 +47,8 @@ class ItpsmMobile extends StatelessWidget {
         )
       ),
       routes: {
-        LoginScreen.routeName: (context) => const LoginScreen()
+        LoginScreen.routeName: (context) => const LoginScreen(),
+        AcademicRecordScreen.routeName:(context) => const AcademicRecordScreen()
       },
     );
   }

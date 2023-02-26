@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itpsm_mobile/screens/students/academic_record_screen.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -43,7 +44,9 @@ class LoginForm extends StatelessWidget {
                 child: TextButton(onPressed: () {}, child: const Text('¿Olvidaste tu contraseña?'))
               ),
               FilledButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AcademicRecordScreen.routeName);
+                },
                 child: const Text('Iniciar sesión'),
               )
             ],

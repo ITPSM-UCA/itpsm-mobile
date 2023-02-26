@@ -9,25 +9,23 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            height: 48,
-            margin: const EdgeInsets.only(bottom: 10),
-            child: 
-              Image.asset('assets/images/logos/logo-ITPSM-p.jpg')
+      body: SizedBox.expand(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 48,
+                  child: Image.asset('assets/images/logos/logo-ITPSM-p.jpg', fit: BoxFit.cover,),
+                ),
+                Text('Iniciar sesión', style: Theme.of(context).textTheme.titleMedium),
+                const LoginForm()
+              ],
+            ),
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            child: Text('Iniciar sesión', style: Theme.of(context).textTheme.titleMedium)
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: LoginForm()
-          )
-      ],),
+        )
+      )
     );
   }
 }

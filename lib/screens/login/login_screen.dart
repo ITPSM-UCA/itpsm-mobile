@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
             height: 48,
             margin: const EdgeInsets.only(bottom: 10),
             child: 
-              Image.network('https://itpsm.edu.sv/wp-content/uploads/2019/01/logo-ITPSM-p.jpg')
+              Image.asset('assets/images/logos/logo-ITPSM-p.jpg')
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),

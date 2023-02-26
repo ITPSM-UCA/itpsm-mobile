@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:itpsm_mobile/screens/login/login_screen.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
   // Ensure the app does not allow landscape mode
@@ -19,6 +20,15 @@ class ItpsmMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ITPSM Mobile',
+      builder: (context, child) => ResponsiveWrapper.builder(
+        child,
+        breakpoints: [
+          const ResponsiveBreakpoint.resize(350, name: MOBILE),
+          const ResponsiveBreakpoint.autoScale(600, name: TABLET),
+          const ResponsiveBreakpoint.resize(800, name: DESKTOP),
+          const ResponsiveBreakpoint.autoScale(1200, name: 'XL'),
+        ]
+      ),
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.deepPurple[900],

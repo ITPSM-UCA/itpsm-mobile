@@ -7,6 +7,9 @@ class StudentAcademicInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final ResponsiveWrapperData responsive = ResponsiveWrapper.of(context);
+
     return Container(
       margin: const EdgeInsets.all(10),
       child: Card(
@@ -19,7 +22,7 @@ class StudentAcademicInformation extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Información académica',
-                  style: Theme.of(context).textTheme.titleSmall,
+                  style: theme.textTheme.titleSmall,
                 ),
               ),
               const SizedBox(height: 20),
@@ -30,7 +33,7 @@ class StudentAcademicInformation extends StatelessWidget {
                 columnMainAxisAlignment: MainAxisAlignment.start,
                 columnCrossAxisAlignment: CrossAxisAlignment.center,
                 columnSpacing: 20,
-                layout: ResponsiveWrapper.of(context).isSmallerThan(DESKTOP) ? 
+                layout: responsive.isSmallerThan(DESKTOP) ? 
                 ResponsiveRowColumnType.COLUMN : ResponsiveRowColumnType.ROW,
                 children: const [
                   ResponsiveRowColumnItem(
@@ -64,7 +67,7 @@ class StudentAcademicInformation extends StatelessWidget {
                 columnMainAxisAlignment: MainAxisAlignment.start,
                 columnCrossAxisAlignment: CrossAxisAlignment.center,
                 columnSpacing: 20,
-                layout: ResponsiveWrapper.of(context).isSmallerThan(DESKTOP) ? 
+                layout: responsive.isSmallerThan(DESKTOP) ? 
                 ResponsiveRowColumnType.COLUMN : ResponsiveRowColumnType.ROW,
                 children: const [
                   ResponsiveRowColumnItem(

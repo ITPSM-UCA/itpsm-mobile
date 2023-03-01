@@ -36,13 +36,13 @@ class ItpsmMobile extends StatelessWidget {
         // brightness: Brightness.light,
         textTheme: const TextTheme(
           titleLarge: TextStyle(
-            fontSize: 34
-          ),
-          titleMedium: TextStyle(
             fontSize: 24
           ),
-          titleSmall: TextStyle(
+          titleMedium: TextStyle(
             fontSize: 20
+          ),
+          titleSmall: TextStyle(
+            fontSize: 18
           ),
         )
       ),

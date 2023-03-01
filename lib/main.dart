@@ -31,9 +31,9 @@ class ItpsmMobile extends StatelessWidget {
         ]
       ),
       theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: Colors.deepPurple[900],
-        brightness: Brightness.light,
+        // useMaterial3: true,
+        // colorSchemeSeed: Colors.deepPurple[900],
+        // brightness: Brightness.light,
         textTheme: const TextTheme(
           titleLarge: TextStyle(
             fontSize: 34

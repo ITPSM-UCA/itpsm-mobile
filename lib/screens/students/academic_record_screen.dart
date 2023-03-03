@@ -11,12 +11,44 @@ class AcademicRecordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  final ResponsiveWrapperData responsive = ResponsiveWrapper.of(context);
+    final ThemeData theme = Theme.of(context);
+    final ResponsiveWrapperData responsive = ResponsiveWrapper.of(context);
+
+    List<Widget> buildAppBarActions(ThemeData theme, ResponsiveWrapperData responsive) {
+      return responsive.isLargerThan(TABLET) ?
+      [
+        TextButton.icon(
+          onPressed: () {},
+          icon: const Icon(Icons.account_circle), 
+          label: const Text('Información personal'),
+          style: TextButton.styleFrom(foregroundColor: theme.colorScheme.onPrimary),
+        ),
+        TextButton.icon(
+          onPressed: () {},
+          icon: const Icon(Icons.receipt_long), 
+          label: const Text('Inscripción de materias'),
+          style: TextButton.styleFrom(foregroundColor: theme.colorScheme.onPrimary),
+        ),
+        TextButton.icon(
+          onPressed: () {},
+          icon: const Icon(Icons.history_edu), 
+          label: const Text('Historial académico'),
+          style: TextButton.styleFrom(foregroundColor: theme.colorScheme.onPrimary),
+        ),
+        TextButton.icon(
+          onPressed: () {},
+          icon: const Icon(Icons.sticky_note_2), 
+          label: const Text('Ver notas'),
+          style: TextButton.styleFrom(foregroundColor: theme.colorScheme.onPrimary),
+        ),
+      ] : [];
+    }
   
-  return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: const Text('ITPSM'),
         automaticallyImplyLeading: false,
+        actions: buildAppBarActions(theme, responsive),
         leading: Builder(
           builder: (BuildContext context) {
             return responsive.isLargerThan(TABLET) ?

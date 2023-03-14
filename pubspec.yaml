@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   responsive_framework: ^0.2.0
   data_table_2: ^2.3.12
+  mockito: ^5.3.2
 
 dev_dependencies:
   flutter_test:

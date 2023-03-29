@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:itpsm_mobile/widgets/login/login_form.dart';
+
+import '../widgets/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
-  static const routeName = '/';
+  // static const routeName = '/';
 
   const LoginScreen({super.key});
 

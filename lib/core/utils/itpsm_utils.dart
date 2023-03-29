@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:itpsm_mobile/core/utils/log/get_logger.dart';
 import 'package:logger/logger.dart';
 
@@ -34,5 +36,19 @@ class ItpsmUtils {
     user.addAll({'token_type' : data['token_type']});
     user.addAll({'platform_menus' : data['platform_menus']});
     return user;
+  }
+
+  /// Gets a encoded timeout response body
+  static String getTimeoutResponseBody() {
+    return json.encode({
+      'errors': {
+        'status': '408',
+        'title': 'Tiempo de respuesta agotada',
+        'detail': 'El tiempo de respuesta de la petición ha sido agotado.'
+      },
+      'jsonapi': {
+        'version': '1.00'
+      }
+    });
   }
 }

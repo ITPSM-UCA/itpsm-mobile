@@ -1,0 +1,83 @@
+{
+    "data": {
+        "type": "auth",
+        "status": "200",
+        "id": "5",
+        "message": "¡Se inició sesión exitosamente!",
+        "attributes": {
+            "id": 5,
+            "name": "Administracion",
+            "email": "admin@itpsm.edu.sv",
+            "email_verified_at": "2023-01-20T01:00:49.000000Z",
+            "system_reference_table": "admin",
+            "system_reference_id": null,
+            "created_at": "2023-01-20T01:00:49.000000Z",
+            "updated_at": "2023-01-20T01:00:49.000000Z",
+            "roles": [
+                {
+                    "id": 1,
+                    "name": "admin",
+                    "guard_name": "api",
+                    "created_at": "2023-01-20T01:00:48.000000Z",
+                    "updated_at": "2023-01-20T01:00:48.000000Z",
+                    "pivot": {
+                        "model_id": 5,
+                        "role_id": 1,
+                        "model_type": "App\\Models\\User"
+                    }
+                }
+            ]
+        },
+        "platform_menus": [
+            {
+                "id": 1,
+                "name": "Usuarios",
+                "redirectTo": "/dashboard/usuarios",
+                "icon": "MdSchool"
+            },
+            {
+                "id": 2,
+                "name": "Estudiantes",
+                "redirectTo": "/dashboard/estudiantes",
+                "icon": "MdSchool"
+            },
+            {
+                "id": 3,
+                "name": "Catedráticos",
+                "redirectTo": "/dashboard/catedraticos",
+                "icon": "GiTeacher"
+            },
+            {
+                "id": 13,
+                "name": "Módulos",
+                "redirectTo": "/dashboard/modulos",
+                "icon": "VscFileSubmodule"
+            },
+            {
+                "id": 4,
+                "name": "Plan de estudios",
+                "redirectTo": "/dashboard/plan-de-estudio",
+                "icon": "AiTwotoneSchedule"
+            },
+            {
+                "id": 5,
+                "name": "Ciclo de estudios",
+                "redirectTo": "/dashboard/ciclo-de-estudios",
+                "icon": "AiOutlineCalendar"
+            },
+            {
+                "id": 12,
+                "name": "Aprobar Evaluaciones",
+                "redirectTo": "/dashboard/aprobaciones",
+                "icon": "AiOutlineCalendar"
+            }
+        ],
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxNyIsImp0aSI6ImYyZTE3Njg5Yzk2MmExNGYxODQ1ZjMwOWY2ZTVjNGEzNjdiNjc1ZWMxMGYxY2FmNmI1ZTdlZTk3YWFmNzFjM2YwOTFmNDViMWUyYmE1NjE5IiwiaWF0IjoxNjc5MDMxNjcyLjk4MTY5MSwibmJmIjoxNjc5MDMxNjcyLjk4MTY5MywiZXhwIjoxNjc5MDM4ODcyLjk1NTUxLCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.lWqM6G30DRMFvUbGOAYRXvqgC3CqHpyxVm9tos37Fg3J4uQJV-JQwfdd-DIshIb_FfAaD62llcJcPs7Cn_nsbY7k33Z9mlma2N3-YvXj-2nOzwOM-7axoiobL4lj5_OO5wvXIQNXC04FrUz_bWYLJntoBSXBF98zWkxkyvWdlpycfiuigan6MPXBzz6_mbFvQZepUQlzKRGThKmtOzn4eYHp9w8UYSxUIIkCJuXlB4VlE_6dpt_zOqLDyTrVRjUUGddYxirTJCWpBzqbRXIOjaS5vZJZF_ImfCDd0p4kpPGY24Eg-jy3KdHDx0CAwGGNbeYA1EUmD2G-Iuz7-xK0QOhfmLt5LU152EQbnFKZKoL5IeVMnhQonj0X1p6Q_Ha-4YKbwwonjMifhM095Pi4GxI0KRdfatwwYJLbjGpX6PD7iu1TKRq0jF-zClSX4Me4EWf9iZqUjjDimgmc0PxxF4AAA_yRDeKE8ZvskTiCoiScJgbTZWl-fCZSwZpfiOJT8B7RAx1Pjij9WoE-PRVGOXS0hzZ3XHd_RvxXVUhMphT8dn9hXSe3GYq1iBhVX_RNSJV7NsJAQx4aaCFRt6KdC2315sIODSTc11R_8S94ye33ly8OnpFDmzYSGiCQXUvcyhRnCG-2LKTq_lgatuddXT-LDrN-SW2mGjVVh7ASQM0",
+        "token2": "f2e17689c962a14f1845f309f6e5c4a367b675ec10f1caf6b5e7ee97aaf71c3f091f45b1e2ba5619",
+        "token_type": "Bearer",
+        "expires_at": "2023-03-17 05:41:13"
+    },
+    "jsonapi": {
+        "version": "1.00"
+    }
+}

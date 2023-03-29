@@ -1,0 +1,11 @@
+{
+    "errors": {
+        "type": "auth",
+        "status": "401",
+        "title": "Error de inicio de sesión.",
+        "detail": "Su correo electrónico y/o contraseña es incorrecto."
+    },
+    "jsonapi": {
+        "version": "1.00"
+    }
+}

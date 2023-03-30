@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:itpsm_mobile/core/utils/log/get_logger.dart';
 import 'package:logger/logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ItpsmUtils {
   static final Logger logger = getLogger();
@@ -50,5 +51,12 @@ class ItpsmUtils {
         'version': '1.00'
       }
     });
+  }
+
+  /// Clears all stored data on the [SharedPreferences] object
+  static Future<bool> clearSharedPreferences() async {
+    final preferences = await SharedPreferences.getInstance();
+
+    return await preferences.clear();
   }
 }

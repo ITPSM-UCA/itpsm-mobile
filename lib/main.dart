@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:itpsm_mobile/core/network/network_info.dart';
+import 'package:itpsm_mobile/core/utils/globals/globals.dart';
 import 'package:itpsm_mobile/features/authentication/data/data_sources/login_local_data_source.dart';
 import 'package:itpsm_mobile/features/authentication/data/data_sources/login_remote_data_source.dart';
 import 'package:itpsm_mobile/features/authentication/data/repositories/authentication_repository_impl.dart';
@@ -27,6 +28,16 @@ void main() {
 }
 
 class ItpsmMobile extends StatelessWidget {
+
+  Widget? _builderHome(AuthenticationState state) {
+    if(state.status == AuthenticationStatus.authenticated) {
+      return const AcademicRecordScreen();
+    }
+    else {
+      return const LoginScreen();
+    }
+  }
+
   const ItpsmMobile({super.key});
   @override
   Widget build(BuildContext context) {
@@ -53,6 +64,7 @@ class ItpsmMobile extends StatelessWidget {
                 builder: (context, state) {
                   return MaterialApp(
                     title: 'ITPSM Mobile',
+                    navigatorKey: Globals.navigatorKey,
                     builder: (context, child) => ResponsiveWrapper.builder(
                       child,
                       breakpoints: [
@@ -78,8 +90,7 @@ class ItpsmMobile extends StatelessWidget {
                         ),
                       )
                     ),
-                    home: state.status == AuthenticationStatus.authenticated ? 
-                      const AcademicRecordScreen() : const LoginScreen(),
+                    home: _builderHome(state),
                     routes: {
                       // LoginScreen.routeName: (context) => const LoginScreen(),
                       AcademicRecordScreen.routeName:(context) => const AcademicRecordScreen()

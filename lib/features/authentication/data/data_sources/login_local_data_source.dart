@@ -11,6 +11,7 @@ abstract class LoginLocalDataSource {
   /// 
   /// Throws [CacheException] if no cached data is present.
   Future<AuthenticatedUserModel> getLastLoginSession();
+  /// Caches the [AuthenticatedUserModel] obtained through the API.
   Future<bool> cacheLoginSession(AuthenticatedUserModel authUser);
 }
 

@@ -6,7 +6,7 @@ part 'authenticated_user_platform_menu_model.g.dart';
 
 @JsonSerializable()
 class AuthenticatedUserPlatformMenuModel extends AuthenticatedUserPlatformMenu {
-  const AuthenticatedUserPlatformMenuModel({required super.id, required super.name});
+  const AuthenticatedUserPlatformMenuModel({required super.id, required super.name, required super.redirectTo, required super.icon});
 
   factory AuthenticatedUserPlatformMenuModel.fromJson(Map<String, dynamic> json) => _$AuthenticatedUserPlatformMenuModelFromJson(json);
 
@@ -17,6 +17,8 @@ class AuthenticatedUserPlatformMenuModel extends AuthenticatedUserPlatformMenu {
     return '''AuthenticatedUserPlatformMenuModel(
       id: $id
       name: $name
+      redirectTo: $redirectTo
+      icon: $icon
     )''';
   }
 }

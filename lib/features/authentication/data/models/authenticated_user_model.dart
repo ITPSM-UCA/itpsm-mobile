@@ -18,6 +18,10 @@ class AuthenticatedUserModel extends AuthenticatedUser {
   // ignore: overridden_fields
   final String expiresAt;
   @override
+  @JsonKey(name: 'system_reference_id')
+  // ignore: overridden_fields
+  final int systemReferenceId;
+  @override
   // ignore: overridden_fields
   final List<AuthenticatedUserRoleModel> roles;
   @override
@@ -31,10 +35,11 @@ class AuthenticatedUserModel extends AuthenticatedUser {
     required super.email, 
     required super.token, 
     required this.tokenType,
-    required this.expiresAt, 
+    required this.expiresAt,
+    required this.systemReferenceId, 
     required this.roles, 
     required this.platformMenus 
-  }) : super(tokenType: tokenType, expiresAt: expiresAt, roles: roles, platformMenus: platformMenus);
+  }) : super(tokenType: tokenType, expiresAt: expiresAt, systemReferenceId: systemReferenceId, roles: roles, platformMenus: platformMenus);
 
   factory AuthenticatedUserModel.fromJson(Map<String, dynamic> json) => _$AuthenticatedUserModelFromJson(json);
 
@@ -47,6 +52,7 @@ class AuthenticatedUserModel extends AuthenticatedUser {
     String? token,
     String? tokenType,
     String? expiresAt,
+    int? systemReferenceId,
     List<AuthenticatedUserRoleModel>? roles,
     List<AuthenticatedUserPlatformMenuModel>? platformMenus,
   }) {
@@ -57,6 +63,7 @@ class AuthenticatedUserModel extends AuthenticatedUser {
       token: token ?? this.token,
       tokenType: tokenType ?? this.tokenType,
       expiresAt: expiresAt ?? this.expiresAt,
+      systemReferenceId: systemReferenceId ?? this.systemReferenceId,
       roles: roles ?? this.roles,
       platformMenus: platformMenus ?? this.platformMenus,
     );
@@ -71,6 +78,7 @@ class AuthenticatedUserModel extends AuthenticatedUser {
       token: $token 
       tokenType: $tokenType, 
       expiresAt: $expiresAt, 
+      systemReferenceId: $systemReferenceId
       roles: $roles, 
       platformMenus: $platformMenus
     )''';

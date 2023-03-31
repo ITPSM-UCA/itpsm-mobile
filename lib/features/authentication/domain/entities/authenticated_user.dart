@@ -11,6 +11,7 @@ abstract class AuthenticatedUser extends Equatable {
   final String token;
   final String tokenType;
   final String expiresAt;
+  final int systemReferenceId;
   final List<AuthenticatedUserRole> roles;
   final List<AuthenticatedUserPlatformMenu> platformMenus;
 
@@ -21,6 +22,7 @@ abstract class AuthenticatedUser extends Equatable {
     required this.token, 
     required this.tokenType,
     required this.expiresAt,
+    required this.systemReferenceId,
     required this.roles,
     required this.platformMenus
   });

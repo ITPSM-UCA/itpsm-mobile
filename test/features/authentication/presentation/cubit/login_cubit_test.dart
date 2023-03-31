@@ -23,10 +23,10 @@ void main() {
     blocTest<LoginCubit, LoginState>(
       'Should emit [LoginStatus.submitting, LoginStatus.success] when login() is called successfully',
       setUp: () =>
-        when(mockRepository.login(adminEmail, adminPassword))
+        when(mockRepository.login(studentEmail, adminPassword))
           .thenAnswer((_) async => const Right(dummyAuthUserModel)),
       build: () => loginCubit,
-      act: (bloc) => bloc.login(adminEmail, adminPassword),
+      act: (bloc) => bloc.login(studentEmail, adminPassword),
       expect: () => [
         const LoginState(
           authenticatedUser: null,
@@ -40,7 +40,7 @@ void main() {
         ),
       ],
       verify: (_) async {
-        verify(mockRepository.login(adminEmail, adminPassword));
+        verify(mockRepository.login(studentEmail, adminPassword));
       },
     );
   });

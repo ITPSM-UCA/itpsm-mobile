@@ -42,7 +42,7 @@ void main() {
     test('Should check if device has internet connection', () async {
       when(mockNetwork.isConnected).thenAnswer((_) async => true);
 
-      await repository.login(adminEmail, adminPassword);
+      await repository.login(studentEmail, studentPassword);
 
       verify(mockNetwork.isConnected);
     });
@@ -66,32 +66,32 @@ void main() {
 
   runTestsOnline(() {
     test('Should return remote data when the call to remote data source is successful', () async {     
-      when(mockRemoteDataSource.login(adminEmail, adminPassword))
+      when(mockRemoteDataSource.login(studentEmail, studentPassword))
         .thenAnswer((_) async => dummyAuthUserModel);
 
-      final result = await repository.login(adminEmail, adminPassword);
+      final result = await repository.login(studentEmail, studentPassword);
 
-      verify(mockRemoteDataSource.login(adminEmail, adminPassword));
+      verify(mockRemoteDataSource.login(studentEmail, studentPassword));
       expect(result, equals(const Right(dummyAuthUserModel)));
     });
 
     test('Should cache the data locally when the call to remote data source is successful', () async {     
-      when(mockRemoteDataSource.login(adminEmail, adminPassword))
+      when(mockRemoteDataSource.login(studentEmail, studentPassword))
         .thenAnswer((_) async => dummyAuthUserModel);
 
-      await repository.login(adminEmail, adminPassword);
+      await repository.login(studentEmail, studentPassword);
 
-      verify(mockRemoteDataSource.login(adminEmail, adminPassword));
+      verify(mockRemoteDataSource.login(studentEmail, studentPassword));
       verify(mockLocalDataSource.cacheLoginSession(dummyAuthUserModel));
     });
 
     test('Should return ServerFailure when the call to remote data source is unsuccessful', () async {     
-      when(mockRemoteDataSource.login(adminEmail, adminPassword))
+      when(mockRemoteDataSource.login(studentEmail, studentPassword))
         .thenThrow(ServerException());
 
-      final result = await repository.login(adminEmail, adminPassword);
+      final result = await repository.login(studentEmail, studentPassword);
 
-      verify(mockRemoteDataSource.login(adminEmail, adminPassword));
+      verify(mockRemoteDataSource.login(studentEmail, studentPassword));
       verifyZeroInteractions(mockLocalDataSource);
       expect(result, equals(const Left(ServerFailure())));
     });
@@ -102,7 +102,7 @@ void main() {
       when(mockLocalDataSource.getLastLoginSession())
         .thenAnswer((realInvocation) async => dummyAuthUserModel);
 
-      final result = await repository.login(adminEmail, adminPassword);
+      final result = await repository.login(studentEmail, studentPassword);
 
       verifyZeroInteractions(mockRemoteDataSource);
       verify(mockLocalDataSource.getLastLoginSession());
@@ -113,7 +113,7 @@ void main() {
       when(mockLocalDataSource.getLastLoginSession())
         .thenThrow(CacheException());
 
-      final result = await repository.login(adminEmail, adminPassword);
+      final result = await repository.login(studentEmail, studentPassword);
 
       verifyZeroInteractions(mockRemoteDataSource);
       verify(mockLocalDataSource.getLastLoginSession());

@@ -27,7 +27,7 @@ void main() {
   });
 
   void setUpMockHttpClient200Response() {
-    when(mockClient.post(loginUri, body: {'email': adminEmail, 'password': adminPassword}))
+    when(mockClient.post(loginUri, body: {'email': studentEmail, 'password': studentPassword}))
         .thenAnswer((_) async => http.Response(expectedJson, 200));
   }
 
@@ -35,25 +35,25 @@ void main() {
     test('Should perform a POST request at $localApiPath', () async {
       setUpMockHttpClient200Response();
 
-      remoteDataSource.login(adminEmail, adminPassword);
-      verify(mockClient.post(loginUri, body: {'email': adminEmail, 'password': adminPassword}));
+      remoteDataSource.login(studentEmail, studentPassword);
+      verify(mockClient.post(loginUri, body: {'email': studentEmail, 'password': studentPassword}));
     });
     
     test('Should return AuthenticatedUserModel when the response code is 200', () async {
       setUpMockHttpClient200Response();
 
-      final response = await remoteDataSource.login(adminEmail, adminPassword);
+      final response = await remoteDataSource.login(studentEmail, studentPassword);
       
       expect(response, dummyAuthUserModel);
     });
 
     test('Should throw ServerException when the response code is different from 200', () async {
-      when(mockClient.post(loginUri, body: {'email': adminEmail, 'password': adminPassword}))
+      when(mockClient.post(loginUri, body: {'email': studentEmail, 'password': studentPassword}))
         .thenAnswer((_) async => http.Response(expectedErrorJson, 401));
 
       final call = remoteDataSource.login;
       
-      expect(() => call(adminEmail, adminPassword), throwsA(const TypeMatcher<ServerException>()));
+      expect(() => call(studentEmail, studentPassword), throwsA(const TypeMatcher<ServerException>()));
     });
   });
 }

@@ -1,83 +1,65 @@
 {
-    "data": {
-        "type": "auth",
-        "status": "200",
-        "id": "5",
-        "message": "¡Se inició sesión exitosamente!",
-        "attributes": {
-            "id": 5,
-            "name": "Administracion",
-            "email": "admin@itpsm.edu.sv",
-            "email_verified_at": "2023-01-20T01:00:49.000000Z",
-            "system_reference_table": "admin",
-            "system_reference_id": null,
-            "created_at": "2023-01-20T01:00:49.000000Z",
-            "updated_at": "2023-01-20T01:00:49.000000Z",
-            "roles": [
-                {
-                    "id": 1,
-                    "name": "admin",
-                    "guard_name": "api",
-                    "created_at": "2023-01-20T01:00:48.000000Z",
-                    "updated_at": "2023-01-20T01:00:48.000000Z",
-                    "pivot": {
-                        "model_id": 5,
-                        "role_id": 1,
-                        "model_type": "App\\Models\\User"
-                    }
-                }
-            ]
-        },
-        "platform_menus": [
-            {
-                "id": 1,
-                "name": "Usuarios",
-                "redirectTo": "/dashboard/usuarios",
-                "icon": "MdSchool"
-            },
-            {
-                "id": 2,
-                "name": "Estudiantes",
-                "redirectTo": "/dashboard/estudiantes",
-                "icon": "MdSchool"
-            },
-            {
-                "id": 3,
-                "name": "Catedráticos",
-                "redirectTo": "/dashboard/catedraticos",
-                "icon": "GiTeacher"
-            },
-            {
-                "id": 13,
-                "name": "Módulos",
-                "redirectTo": "/dashboard/modulos",
-                "icon": "VscFileSubmodule"
-            },
-            {
-                "id": 4,
-                "name": "Plan de estudios",
-                "redirectTo": "/dashboard/plan-de-estudio",
-                "icon": "AiTwotoneSchedule"
-            },
-            {
-                "id": 5,
-                "name": "Ciclo de estudios",
-                "redirectTo": "/dashboard/ciclo-de-estudios",
-                "icon": "AiOutlineCalendar"
-            },
-            {
-                "id": 12,
-                "name": "Aprobar Evaluaciones",
-                "redirectTo": "/dashboard/aprobaciones",
-                "icon": "AiOutlineCalendar"
-            }
-        ],
-        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxNyIsImp0aSI6ImYyZTE3Njg5Yzk2MmExNGYxODQ1ZjMwOWY2ZTVjNGEzNjdiNjc1ZWMxMGYxY2FmNmI1ZTdlZTk3YWFmNzFjM2YwOTFmNDViMWUyYmE1NjE5IiwiaWF0IjoxNjc5MDMxNjcyLjk4MTY5MSwibmJmIjoxNjc5MDMxNjcyLjk4MTY5MywiZXhwIjoxNjc5MDM4ODcyLjk1NTUxLCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.lWqM6G30DRMFvUbGOAYRXvqgC3CqHpyxVm9tos37Fg3J4uQJV-JQwfdd-DIshIb_FfAaD62llcJcPs7Cn_nsbY7k33Z9mlma2N3-YvXj-2nOzwOM-7axoiobL4lj5_OO5wvXIQNXC04FrUz_bWYLJntoBSXBF98zWkxkyvWdlpycfiuigan6MPXBzz6_mbFvQZepUQlzKRGThKmtOzn4eYHp9w8UYSxUIIkCJuXlB4VlE_6dpt_zOqLDyTrVRjUUGddYxirTJCWpBzqbRXIOjaS5vZJZF_ImfCDd0p4kpPGY24Eg-jy3KdHDx0CAwGGNbeYA1EUmD2G-Iuz7-xK0QOhfmLt5LU152EQbnFKZKoL5IeVMnhQonj0X1p6Q_Ha-4YKbwwonjMifhM095Pi4GxI0KRdfatwwYJLbjGpX6PD7iu1TKRq0jF-zClSX4Me4EWf9iZqUjjDimgmc0PxxF4AAA_yRDeKE8ZvskTiCoiScJgbTZWl-fCZSwZpfiOJT8B7RAx1Pjij9WoE-PRVGOXS0hzZ3XHd_RvxXVUhMphT8dn9hXSe3GYq1iBhVX_RNSJV7NsJAQx4aaCFRt6KdC2315sIODSTc11R_8S94ye33ly8OnpFDmzYSGiCQXUvcyhRnCG-2LKTq_lgatuddXT-LDrN-SW2mGjVVh7ASQM0",
-        "token2": "f2e17689c962a14f1845f309f6e5c4a367b675ec10f1caf6b5e7ee97aaf71c3f091f45b1e2ba5619",
-        "token_type": "Bearer",
-        "expires_at": "2023-03-17 05:41:13"
-    },
-    "jsonapi": {
-        "version": "1.00"
-    }
+	"data": {
+		"type": "auth",
+		"status": "200",
+		"id": "15",
+		"message": "¡Se inició sesión exitosamente!",
+		"attributes": {
+			"id": 15,
+			"name": "Aurelie Ankunding",
+			"email": "janessa67@yahoo.com",
+			"email_verified_at": null,
+			"system_reference_table": "students",
+			"system_reference_id": 10,
+			"created_at": "2023-02-17T01:16:32.000000Z",
+			"updated_at": "2023-02-26T22:50:41.000000Z",
+			"roles": [
+				{
+					"id": 3,
+					"name": "student",
+					"guard_name": "api",
+					"created_at": "2023-01-20T01:00:48.000000Z",
+					"updated_at": "2023-01-20T01:00:48.000000Z",
+					"pivot": {
+						"model_id": 15,
+						"role_id": 3,
+						"model_type": "App\\Models\\User"
+					}
+				}
+			]
+		},
+		"platform_menus": [
+			{
+				"id": 8,
+				"name": "Información personal",
+				"redirectTo": "\/dashboard\/informacion-personal",
+				"icon": "MdSchool"
+			},
+			{
+				"id": 9,
+				"name": "Inscripción de materias",
+				"redirectTo": "\/dashboard\/inscripcion-de-materias",
+				"icon": "MdSchool"
+			},
+			{
+				"id": 10,
+				"name": "Historial academico",
+				"redirectTo": "\/dashboard\/historial-academico",
+				"icon": "MdSchool"
+			},
+			{
+				"id": 11,
+				"name": "Ver notas",
+				"redirectTo": "\/dashboard\/notas",
+				"icon": "MdSchool"
+			}
+		],
+		"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxNyIsImp0aSI6IjRlM2M0MGFjOWI5ZWVhMDViNWUyZDgyZTk1OGFlYzAyMzM0MDkzOWUxMmVjODNmNzJkMWRiMDMyNjIzM2ExNjZmMmQwMWQ0OGM1MDZiZjBlIiwiaWF0IjoxNjgwMjM4OTQxLjkxNDI1NiwibmJmIjoxNjgwMjM4OTQxLjkxNDI1OCwiZXhwIjoxNjgwMjQ2MTQxLjg4ODYyNSwic3ViIjoiMTUiLCJzY29wZXMiOltdfQ.Meiw1s7dnIc3fX054q89Zw7CYDGafgTPavRCyJpR_n9Una3-Blzv_LcjV0WwQWi1xNGHSMMrOdXVeUkXUL721k2GUnONIgHRuDHP9Wde6J-2UNI_IBHUBkwFfmO8OWyXrlASeZSASL1AGX0BxIEVEa9WC8PiuZ5TNJ-_dxINyLD3ggwiadHkWVq3V9fyTOtL5v4LA9YUhY5pwJ5lnPb_379-wgiF-hWqw1TSLQNWr_Ny_4nHgpK6415qZ9F6Am1eLI5iKM_cvBujj4r4RLLXGI5PghfK5IyDVlIjMlFAy5ABsIJdcLtxFilPXfBFuEemwRjU1IhTjGmpSfzRAIpsq8ff32QnVC918oPM4dQJJ__Or3EIcRawIjAknERPCjvwGQB0H0FarDJREagxNtsFg2Cr3aZnoRx71BgJlylmSVzwDT3gUcsz6VA_9jPCecFvW9Yb8-C6yVfu-mj0j923a0m4uIQJ0q92i5roXxf4EKNQloKl0hGExLA9K5E_uK2pHb9NzUqI6r03x_-L6ww-QBZa27NS75jr6S6v079igPomNqpE089YbDmXlVfZogegVg3KjNzP5tjH9SkeLT3FZ4cybYQETpdKjOByr6RGuAM6srqVlN9DNM8HZeFrQyK2HvLsFDcP-j5FknfZQIu9cu0ekMMLuosjsmelONyX3vk",
+		"token2": "4e3c40ac9b9eea05b5e2d82e958aec023340939e12ec83f72d1db0326233a166f2d01d48c506bf0e",
+		"token_type": "Bearer",
+		"expires_at": "2023-03-31 05:02:21"
+	},
+	"jsonapi": {
+		"version": "1.00"
+	}
 }

@@ -1,0 +1,79 @@
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../domain/entities/students_approved_subjects.dart';
+
+part 'students_approved_subjects_model.g.dart';
+
+@JsonSerializable()
+class StudentsApprovedSubjectsModel extends StudentsApprovedSubjects {
+  @override
+  @JsonKey(name: 'final_score')
+  // ignore: overridden_fields
+  final int finalScore;
+  @override
+  @JsonKey(name: 'is_approved')
+  // ignore: overridden_fields
+  final int isApproved;
+  @override
+  @JsonKey(name: 'curriculum_subject_id')
+  // ignore: overridden_fields
+  final int curriculumSubjectId;
+  @override
+  @JsonKey(name: 'period_id')
+  // ignore: overridden_fields
+  final int periodId;
+  @override
+  @JsonKey(name: 'period_year')
+  // ignore: overridden_fields
+  final int periodYear;
+  @override
+  @JsonKey(name: 'period_code')
+  // ignore: overridden_fields
+  final int periodCode;
+  @override
+  @JsonKey(name: 'curriculum_subject_label')
+  // ignore: overridden_fields
+  final String curriculumSubjectLabel;
+  @override
+  @JsonKey(name: 'curriculum_label')
+  // ignore: overridden_fields
+  final String curriculumLabel;
+  @override
+  @JsonKey(name: 'career_label')
+  // ignore: overridden_fields
+  final String careerLabel;
+  @override
+  @JsonKey(name: 'teacher_name')
+  // ignore: overridden_fields
+  final String teacherName;
+
+  const StudentsApprovedSubjectsModel({
+    required this.finalScore, 
+    required this.isApproved, 
+    required this.curriculumSubjectId, 
+    required this.periodId, 
+    required super.code, 
+    required super.enrollment, 
+    required this.periodYear, 
+    required this.periodCode, 
+    required this.curriculumSubjectLabel, 
+    required this.curriculumLabel, 
+    required this.careerLabel, 
+    required this.teacherName
+  }) : super(
+    finalScore: finalScore, 
+    isApproved: isApproved, 
+    curriculumSubjectId: curriculumSubjectId, 
+    periodId: periodId, 
+    periodYear: periodYear, 
+    periodCode: periodCode, 
+    curriculumSubjectLabel: curriculumSubjectLabel, 
+    curriculumLabel: curriculumLabel, 
+    careerLabel: careerLabel, 
+    teacherName: teacherName
+  );
+
+  factory StudentsApprovedSubjectsModel.fromJson(Map<String, dynamic> json) => _$StudentsApprovedSubjectsModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$StudentsApprovedSubjectsModelToJson(this);
+}

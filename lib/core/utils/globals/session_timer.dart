@@ -48,12 +48,12 @@ class SessionTimer {
     if(Globals.expirationTimer != null && Globals.expirationTimer!.isActive) {
       Globals.sessionLengthInMinutes = 0;
       Globals.expirationTimer!.cancel();
+      Globals.expirationTimer = null;
     }
   }
 
   /// Stops the session timer and also triggers the [LogoutRequestedEvent] inside the [triggerLogoutEvent] function
   static void _sessionExpired(VoidCallback triggerLogoutEvent) {
-    stopTimer();
     triggerLogoutEvent();
   }
 

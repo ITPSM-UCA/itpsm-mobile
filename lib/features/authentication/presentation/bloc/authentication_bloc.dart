@@ -43,6 +43,10 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
       logger.d('Shared preferences cleared.');
 
+      SessionTimer.stopTimer();
+
+      logger.d('Session timer stopped.');
+
       emit(state.copyWith(
         status: AuthenticationStatus.unauthenticated,
         authenticatedUser: null

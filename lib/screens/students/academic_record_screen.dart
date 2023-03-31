@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:itpsm_mobile/features/authentication/presentation/bloc/authentication_event.dart';
 import 'package:itpsm_mobile/features/drawer/presentation/main_drawer_screen.dart';
 import 'package:itpsm_mobile/widgets/students/academic_record/student_academic_information.dart';
 import 'package:itpsm_mobile/widgets/students/academic_record/students_studied_subjects.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
+
+import '../../core/utils/constants/constants.dart';
+import '../../features/authentication/presentation/bloc/authentication_bloc.dart';
 
 class AcademicRecordScreen extends StatelessWidget {
   static const routeName = '/dashboard/historial-academico';
@@ -11,33 +16,36 @@ class AcademicRecordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ResponsiveWrapperData responsive = ResponsiveWrapper.of(context);
+    final navigator = Navigator.of(context);
+    final responsive = ResponsiveWrapper.of(context);
+    final authProvider = context.read<AuthenticationBloc>();
+    final authUser = authProvider.state.authenticatedUser;
 
-    List<Widget> buildAppBarActions(ThemeData theme, ResponsiveWrapperData responsive) {
-      return responsive.isLargerThan(TABLET) ?
-      [
-        TextButton.icon(
-          onPressed: () {},
-          icon: const Icon(Icons.account_circle), 
-          label: const Text('Información personal'),
-        ),
-        TextButton.icon(
-          onPressed: () {},
-          icon: const Icon(Icons.receipt_long), 
-          label: const Text('Inscripción de materias'),
-        ),
-        TextButton.icon(
-          onPressed: () {},
-          icon: const Icon(Icons.history_edu), 
-          label: const Text('Historial académico'),
-        ),
-        TextButton.icon(
-          onPressed: () {},
-          icon: const Icon(Icons.sticky_note_2), 
-          label: const Text('Ver notas'),
-        ),
-      ] : [];
+    TextButton buildMenuItem(String text, String iconName, VoidCallback onPressed) {
+      IconData icon;
+  
+      switch(iconName) {
+        case mdSchoolIcon: icon = Icons.school; break;
+        case logoutIcon: icon = Icons.logout_rounded; break;
+        default: icon = Icons.school; break;
+      }
+      
+      return TextButton.icon(onPressed: onPressed, icon: Icon(icon, size: 25), label: Text(text));
+    }
+
+    List<TextButton> buildAppBarActions(ResponsiveWrapperData responsive) {
+      if(responsive.isLargerThan(TABLET)) {
+        final menu = authUser?.platformMenus.map((menu) {
+          return buildMenuItem(menu.name, menu.icon, () { navigator.pushNamed(menu.redirectTo); });
+        }).toList() ?? [];
+
+        if(menu.isNotEmpty) {
+          menu.add(buildMenuItem('Cerrar Sesión', logoutIcon, () => authProvider.add(LogoutRequestedEvent())));
+        }
+
+        return menu;
+      }
+      else { return []; }
     }
   
     return Scaffold(
@@ -45,7 +53,7 @@ class AcademicRecordScreen extends StatelessWidget {
         elevation: 4,
         title: const Text('ITPSM'),
         automaticallyImplyLeading: false,
-        actions: buildAppBarActions(theme, responsive),
+        actions: buildAppBarActions(responsive),
         leading: Builder(
           builder: (BuildContext context) {
             return responsive.isLargerThan(TABLET) ?

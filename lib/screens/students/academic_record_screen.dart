@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:itpsm_mobile/screens/main_drawer/main_drawer_screen.dart';
+import 'package:itpsm_mobile/features/drawer/presentation/main_drawer_screen.dart';
 import 'package:itpsm_mobile/widgets/students/academic_record/student_academic_information.dart';
 import 'package:itpsm_mobile/widgets/students/academic_record/students_studied_subjects.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
 class AcademicRecordScreen extends StatelessWidget {
-  static const routeName = '/academicRecord';
+  static const routeName = '/dashboard/historial-academico';
   
   const AcademicRecordScreen({super.key});
 

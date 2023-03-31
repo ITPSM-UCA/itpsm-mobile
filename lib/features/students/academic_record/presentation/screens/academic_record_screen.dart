@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:itpsm_mobile/features/authentication/presentation/bloc/authentication_event.dart';
 import 'package:itpsm_mobile/features/drawer/presentation/main_drawer_screen.dart';
-import 'package:itpsm_mobile/widgets/students/academic_record/student_academic_information.dart';
-import 'package:itpsm_mobile/widgets/students/academic_record/students_studied_subjects.dart';
+import 'package:itpsm_mobile/features/students/academic_record/presentation/widgets/student_academic_information.dart';
+import 'package:itpsm_mobile/features/students/academic_record/presentation/widgets/students_studied_subjects.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
-import '../../core/utils/constants/constants.dart';
-import '../../features/authentication/presentation/bloc/authentication_bloc.dart';
+import '../../../../../core/utils/constants/constants.dart';
+import '../../../../authentication/presentation/bloc/authentication_bloc.dart';
 
 class AcademicRecordScreen extends StatelessWidget {
   static const routeName = '/dashboard/historial-academico';

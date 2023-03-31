@@ -1,7 +1,7 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:itpsm_mobile/domain/data_table_sources/students/academic_record/studied_subjects_data_table_source.dart';
-import 'package:itpsm_mobile/widgets/utils/data_table/no_data_modal.dart';
+import 'package:itpsm_mobile/core/utils/widgets/data_table/no_data_modal.dart';
 
 class StudiedSubjectsTable extends StatelessWidget {
   const StudiedSubjectsTable({super.key});

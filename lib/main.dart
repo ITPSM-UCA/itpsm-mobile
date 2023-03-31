@@ -11,7 +11,7 @@ import 'package:itpsm_mobile/features/authentication/data/repositories/authentic
 import 'package:itpsm_mobile/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:itpsm_mobile/features/authentication/presentation/bloc/authentication_state.dart';
 import 'package:itpsm_mobile/features/authentication/presentation/cubit/login/login_cubit.dart';
-import 'package:itpsm_mobile/screens/students/academic_record_screen.dart';
+import 'package:itpsm_mobile/features/students/academic_record/presentation/screens/academic_record_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

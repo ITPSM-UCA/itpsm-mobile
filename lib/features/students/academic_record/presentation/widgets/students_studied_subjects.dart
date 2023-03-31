@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:itpsm_mobile/widgets/students/academic_record/studied_subjects_table.dart';
-import 'package:itpsm_mobile/widgets/utils/fieldset.dart';
+import 'package:itpsm_mobile/features/students/academic_record/presentation/widgets/studied_subjects_table.dart';
+import 'package:itpsm_mobile/core/utils/widgets/fieldset.dart';
 
 class StudentsStudiedSubjects extends StatelessWidget {
   const StudentsStudiedSubjects({super.key});

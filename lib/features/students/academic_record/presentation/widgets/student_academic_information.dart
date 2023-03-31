@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:itpsm_mobile/widgets/utils/vertical_labeled_text.dart';
+import 'package:itpsm_mobile/core/utils/widgets/vertical_labeled_text.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class StudentAcademicInformation extends StatelessWidget {

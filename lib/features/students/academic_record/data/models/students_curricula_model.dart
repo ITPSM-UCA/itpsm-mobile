@@ -1,11 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../domain/entities/student_curricula.dart';
+import '../../domain/entities/students_curricula.dart';
 
-part 'student_curricula_model.g.dart';
+part 'students_curricula_model.g.dart';
 
 @JsonSerializable()
-class StudentCurriculaModel extends StudentCurricula {
+class StudentsCurriculaModel extends StudentsCurricula {
   @override
   @JsonKey(name: 'entry_year')
   // ignore: overridden_fields
@@ -35,7 +35,7 @@ class StudentCurriculaModel extends StudentCurricula {
   // ignore: overridden_fields
   final int uvTotal;
   
-  const StudentCurriculaModel({
+  const StudentsCurriculaModel({
     required super.cum, 
     required this.entryYear, 
     required super.uv, 
@@ -56,7 +56,7 @@ class StudentCurriculaModel extends StudentCurricula {
     uvTotal: uvTotal
   );
 
-  factory StudentCurriculaModel.fromJson(Map<String, dynamic> json) => _$StudentCurriculaModelFromJson(json);
+  factory StudentsCurriculaModel.fromJson(Map<String, dynamic> json) => _$StudentsCurriculaModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$StudentCurriculaModelToJson(this);
+  Map<String, dynamic> toJson() => _$StudentsCurriculaModelToJson(this);
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
-abstract class StudentCurricula extends Equatable {
+abstract class StudentsCurricula extends Equatable {
   final double cum;
   final int entryYear;
   final int uv;
@@ -13,7 +13,7 @@ abstract class StudentCurricula extends Equatable {
   final String status;
   final int uvTotal;
 
-  const StudentCurricula({
+  const StudentsCurricula({
     required this.cum, 
     required this.entryYear, 
     required this.uv, 

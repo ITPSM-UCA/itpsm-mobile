@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:ui';
 
+import 'package:flutter/material.dart';
 import 'package:itpsm_mobile/core/utils/log/get_logger.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -58,5 +60,37 @@ class ItpsmUtils {
     final preferences = await SharedPreferences.getInstance();
 
     return await preferences.clear();
+  }
+
+  /// Shows an AlertDialog with the [content] as the dialog content and the [icon] as the dialog title
+  static void showAlertDialog(String content, Icon icon, BuildContext context, [String title = '']) {
+    showDialog(context: context, builder: (context) => WillPopScope(
+      onWillPop: () async => false,
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: AlertDialog(
+          elevation: 6,
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
+          title: icon,
+          // title: RichText(
+          //   text: TextSpan(
+          //     children: [
+          //       const WidgetSpan(child: Icon(Icons.error)),
+          //       TextSpan(text: error.title)
+          //     ]
+          //   )),
+          actionsAlignment: MainAxisAlignment.center,
+          content: Text(content, textAlign: TextAlign.center),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Aceptar')
+            )
+          ],
+        ),
+      ), 
+    ));
   }
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:itpsm_mobile/core/utils/constants/constants.dart';
 import 'package:itpsm_mobile/core/utils/log/get_logger.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,9 +20,14 @@ class ItpsmUtils {
     return jsonResponse['data']['attributes'];
   }
 
+  /// Gets the attributes object from the API [jsonResponse] 
+  static Map<String, dynamic> getFirstAttributesObjectFromApiResponse(Map<String, dynamic> jsonResponse) {
+    return jsonResponse['data']['attributes'][0];
+  }
+
   /// Gets the errors object from the API [jsonResponse] 
   static Map<String, dynamic> getErrorsObjectFromApiResponse(Map<String, dynamic> jsonResponse) {
-    return jsonResponse['data']['attributes'];
+    return jsonResponse['errors'];
   }
 
   /// Checks if the errors object is contained inside the the API [jsonResponse] 
@@ -60,6 +66,17 @@ class ItpsmUtils {
     final preferences = await SharedPreferences.getInstance();
 
     return await preferences.clear();
+  }
+
+  /// Creates a new Uri instace with the given [path] and given [queryParameters]
+  static Uri getApiUri(String path, [Map<String, dynamic>? queryParameters]) {
+    // return Uri(path: '$localApiPath/$path', queryParameters: queryParameters ?? {});
+    return Uri.parse('$localApiPath/$path').replace(queryParameters: queryParameters);
+  }
+
+  /// Returns the bearer token authorization format with the given [token]
+  static String getBearerTokenFormat(String token) {
+    return 'Bearer $token';
   }
 
   /// Shows an AlertDialog with the [content] as the dialog content and the [icon] as the dialog title

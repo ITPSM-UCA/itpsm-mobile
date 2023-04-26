@@ -35,7 +35,7 @@ class LoginLocalDataSourceImpl implements LoginLocalDataSource {
       return Future.value(AuthenticatedUserModel.fromJson(json.decode('jsonString')));
     }
     else {
-      throw CacheException();
+      throw CacheException(title: 'No session found', message: 'No previous session was found stored in the device.');
     }
   }
 

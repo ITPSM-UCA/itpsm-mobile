@@ -3,8 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:itpsm_mobile/core/errors/failures/failure.dart';
 import 'package:itpsm_mobile/features/authentication/data/models/authenticated_user_model.dart';
 
-import '../../../../../core/errors/failures/http/server_failure.dart';
-
 enum LoginStatus {
   initial,
   submitting,
@@ -14,7 +12,7 @@ enum LoginStatus {
 
 class LoginState extends Equatable {
   final LoginStatus status;
-  final Failure failure;
+  final Failure? failure;
   final AuthenticatedUserModel? authenticatedUser;
 
   const LoginState({
@@ -26,7 +24,7 @@ class LoginState extends Equatable {
   factory LoginState.initial() {
     return const LoginState(
       status: LoginStatus.initial,
-      failure: ServerFailure(),
+      failure: null,
       authenticatedUser: null
     );
   }

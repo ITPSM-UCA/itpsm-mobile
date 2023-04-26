@@ -19,9 +19,14 @@ class ItpsmUtils {
   static Map<String, dynamic> getAttributesObjectFromApiResponse(Map<String, dynamic> jsonResponse) {
     return jsonResponse['data']['attributes'];
   }
+  
+  /// Gets the attributes array from the API [jsonResponse] 
+  static List<Map<String, dynamic>> getAttributesArrayFromApiResponse(Map<String, dynamic> jsonResponse) {
+    return (jsonResponse['data']['attributes'] as List).map((e) => e as Map<String, dynamic>).toList();
+  }
 
-  /// Gets the attributes object from the API [jsonResponse] 
-  static Map<String, dynamic> getFirstAttributesObjectFromApiResponse(Map<String, dynamic> jsonResponse) {
+  /// Gets the first object in attributes array from the API [jsonResponse] 
+  static Map<String, dynamic> getFirstAttributesArrayFromApiResponse(Map<String, dynamic> jsonResponse) {
     return jsonResponse['data']['attributes'][0];
   }
 

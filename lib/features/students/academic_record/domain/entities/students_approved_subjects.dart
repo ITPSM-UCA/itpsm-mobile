@@ -2,31 +2,33 @@
 import 'package:equatable/equatable.dart';
 
 abstract class StudentsApprovedSubjects extends Equatable {
-  final int finalScore;
+  final String name;
+  final double finalScore;
   final int isApproved;
-  final int curriculumSubjectId;
-  final int periodId;
-  final int code;
+  // final int curriculumSubjectId;
+  // final int periodId;
+  // final int code;
   final int enrollment;
-  final int periodYear;
-  final int periodCode;
-  final String curriculumSubjectLabel;
-  final String curriculumLabel;
-  final String careerLabel;
+  // final int periodYear;
+  // final int periodCode;
+  // final String curriculumSubjectLabel;
+  // final String curriculumLabel;
+  // final String careerLabel;
   final String teacherName;
 
   const StudentsApprovedSubjects({
+    required this.name,
     required this.finalScore, 
     required this.isApproved, 
-    required this.curriculumSubjectId, 
-    required this.periodId, 
-    required this.code, 
+    // required this.curriculumSubjectId, 
+    // required this.periodId, 
+    // required this.code, 
     required this.enrollment, 
-    required this.periodYear, 
-    required this.periodCode, 
-    required this.curriculumSubjectLabel, 
-    required this.curriculumLabel, 
-    required this.careerLabel, 
+    // required this.periodYear, 
+    // required this.periodCode, 
+    // required this.curriculumSubjectLabel, 
+    // required this.curriculumLabel, 
+    // required this.careerLabel, 
     required this.teacherName
   });
 
@@ -35,15 +37,15 @@ abstract class StudentsApprovedSubjects extends Equatable {
     return [
       finalScore,
       isApproved,
-      curriculumSubjectId,
-      periodId,
-      code,
+      // curriculumSubjectId,
+      // periodId,
+      // code,
       enrollment,
-      periodYear,
-      periodCode,
-      curriculumSubjectLabel,
-      curriculumLabel,
-      careerLabel,
+      // periodYear,
+      // periodCode,
+      // curriculumSubjectLabel,
+      // curriculumLabel,
+      // careerLabel,
       teacherName,
     ];
   }

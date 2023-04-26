@@ -10,8 +10,9 @@ abstract class StudentsCurricula extends Equatable {
   final int scholarshipRate;
   final int studentId;
   final int curriculumId;
+  final String cucrriculaName;
   final String status;
-  final int uvTotal;
+  // final int uvTotal;
 
   const StudentsCurricula({
     required this.cum, 
@@ -21,9 +22,10 @@ abstract class StudentsCurricula extends Equatable {
     required this.scholarshipId, 
     required this.scholarshipRate, 
     required this.studentId, 
-    required this.curriculumId, 
+    required this.curriculumId,
+    required this.cucrriculaName, 
     required this.status, 
-    required this.uvTotal
+    // this.uvTotal
   });
 
   @override
@@ -38,7 +40,7 @@ abstract class StudentsCurricula extends Equatable {
       studentId,
       curriculumId,
       status,
-      uvTotal,
+      // uvTotal,
     ];
   }
 }

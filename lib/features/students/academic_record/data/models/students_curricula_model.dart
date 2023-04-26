@@ -31,9 +31,13 @@ class StudentsCurriculaModel extends StudentsCurricula {
   // ignore: overridden_fields
   final int curriculumId;
   @override
-  @JsonKey(name: 'uv_total')
+  @JsonKey(name: 'cucrriculaname')
   // ignore: overridden_fields
-  final int uvTotal;
+  final String cucrriculaName;
+  // @override
+  // @JsonKey(name: 'uv_total')
+  // // ignore: overridden_fields
+  // final int uvTotal;
   
   const StudentsCurriculaModel({
     required super.cum, 
@@ -44,8 +48,9 @@ class StudentsCurriculaModel extends StudentsCurricula {
     required this.scholarshipRate, 
     required this.studentId, 
     required this.curriculumId, 
+    required this.cucrriculaName, 
     required super.status, 
-    required this.uvTotal
+    // required this.uvTotal
   }) : super(
     entryYear: entryYear, 
     graduationYear: graduationYear, 
@@ -53,10 +58,20 @@ class StudentsCurriculaModel extends StudentsCurricula {
     scholarshipRate: scholarshipRate,
     studentId: studentId,
     curriculumId: curriculumId,
-    uvTotal: uvTotal
+    cucrriculaName: cucrriculaName,
+    // uvTotal: uvTotal
   );
 
   factory StudentsCurriculaModel.fromJson(Map<String, dynamic> json) => _$StudentsCurriculaModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$StudentsCurriculaModelToJson(this);
+
+  String get statusText {
+    switch(status) {
+      case 'A': return 'Activo';
+      case 'G': return 'Graduado';
+      case 'I': 
+      default: return 'Inactivo';
+    }
+  }
 }

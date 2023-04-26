@@ -1,7 +1,10 @@
 import 'package:equatable/equatable.dart';
 
 abstract class Failure extends Equatable {
-  const Failure();
+  final String title;
+  final String cause;
+  
+  const Failure({required this.title, required this.cause});
   
   @override
   List<Object> get props => [];

@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:itpsm_mobile/core/utils/itpsm_utils.dart';
 import 'package:itpsm_mobile/core/utils/log/get_logger.dart';
 import 'package:itpsm_mobile/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:itpsm_mobile/features/authentication/presentation/cubit/login/login_cubit.dart';
@@ -16,6 +17,8 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  bool _isLoading = false;
+  bool _showPassword = false;
   final FocusNode _focusPsswd = FocusNode();
   final GlobalKey<FormState> _formKey = GlobalKey();
   final TextEditingController _emailCtrl = TextEditingController();
@@ -24,7 +27,10 @@ class _LoginFormState extends State<LoginForm> {
 
   String? _validateEmail(String? email) {
     if(email != null) {
-      if (email.isEmpty || !EmailValidator.validate(email)) {
+      if(email.isEmpty) {
+        return 'El ingreso del correo electrónico es obligatorio.';        
+      }
+      else if (!EmailValidator.validate(email)) {
         return 'Por favor ingrese un correo electrónico válido.';
       }
 
@@ -37,7 +43,6 @@ class _LoginFormState extends State<LoginForm> {
 
   String? _validatePsswd(String? passwd) {
     if(passwd != null) {
-      // TODO: Add necessary validations
       if(passwd.isEmpty) return 'El ingreso de la contraseña es obligatorio.';
       
       return null;
@@ -47,16 +52,18 @@ class _LoginFormState extends State<LoginForm> {
     }
   }
 
-  void _submit() {
+  void _submit() async {
     final form = _formKey.currentState;
 
     if(form == null || !form.validate()) return;
 
+    setState(() { _isLoading = true; });
     form.save();
 
     LoginForm.logger.d('email: ${_credentials['email']} psswd: ${_credentials['password']}');
 
-    context.read<LoginCubit>().login(_credentials['email']!, _credentials['password']!);
+    await context.read<LoginCubit>().login(_credentials['email']!, _credentials['password']!);
+    setState(() { _isLoading = false; });
   }
 
   @override
@@ -76,8 +83,13 @@ class _LoginFormState extends State<LoginForm> {
         if(state.status == LoginStatus.success) {
           context.read<AuthenticationBloc>().setAuthentication(state.authenticatedUser);
         }
+        else if(state.status == LoginStatus.failure) {
+          ItpsmUtils.showAlertDialog(state.failure!.cause, const Icon(Icons.error), context);
+        }
       },
-      child: ConstrainedBox(
+      child: _isLoading ?
+        const Padding(padding: EdgeInsets.all(15), child: CircularProgressIndicator())
+        : ConstrainedBox(
         constraints: const BoxConstraints(
           minWidth: 240,
           maxWidth: 380,
@@ -121,18 +133,23 @@ class _LoginFormState extends State<LoginForm> {
                     Container(
                       margin: const EdgeInsets.only(top: 10),
                       child: TextFormField(
-                        obscureText: true,
+                        obscureText: !_showPassword,
                         autocorrect: false,
                         controller: _psswdCtrl,
                         focusNode: _focusPsswd,
                         enableSuggestions: false,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           filled: true,
                           hintText: 'Contraseña',
                           labelText: 'Contraseña',
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.password),
-                          suffixIcon: Icon(Icons.remove_red_eye),
+                          border: const OutlineInputBorder(),
+                          prefixIcon: const Icon(Icons.password),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() { _showPassword = !_showPassword; });
+                            }, 
+                            icon: _showPassword ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility), 
+                          ),
                         ),
                         validator: (value) { return _validatePsswd(value); },
                         onSaved: (value) {
@@ -150,7 +167,6 @@ class _LoginFormState extends State<LoginForm> {
                     FilledButton(
                       onPressed: () {
                         _submit();
-                        // Navigator.of(context).pushNamed(AcademicRecordScreen.routeName);
                       },
                       child: const Text('Iniciar sesión'),
                     )

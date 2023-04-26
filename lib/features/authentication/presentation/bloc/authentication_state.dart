@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
-import 'package:itpsm_mobile/features/authentication/domain/entities/authenticated_user.dart';
+import 'package:itpsm_mobile/features/authentication/data/models/authenticated_user_model.dart';
 
 enum AuthenticationStatus {
   unknown,
@@ -10,7 +10,7 @@ enum AuthenticationStatus {
 
 class AuthenticationState extends Equatable {
   final AuthenticationStatus status;
-  final AuthenticatedUser? authenticatedUser;
+  final AuthenticatedUserModel? authenticatedUser;
 
   const AuthenticationState({required this.status, this.authenticatedUser});
 
@@ -23,7 +23,7 @@ class AuthenticationState extends Equatable {
 
   AuthenticationState copyWith({
     AuthenticationStatus? status,
-    AuthenticatedUser? authenticatedUser,
+    AuthenticatedUserModel? authenticatedUser,
   }) {
     return AuthenticationState(
       status: status ?? this.status,

@@ -17,11 +17,11 @@ void main() {
     test('Should make a valid copy of a LoginState instance.', () {
       final newState = initialState.copyWith(
         status: LoginStatus.success,
-        failure: const ServerFailure(),
+        failure: const ServerFailure(title: '', cause: ''),
         authenticatedUser: dummyAuthUserModel
       );
 
-      expect(newState, const LoginState(status: LoginStatus.success, failure: ServerFailure(), authenticatedUser: dummyAuthUserModel));
+      expect(newState, const LoginState(status: LoginStatus.success, failure: ServerFailure(title: '', cause: ''), authenticatedUser: dummyAuthUserModel));
     });
   });
 }

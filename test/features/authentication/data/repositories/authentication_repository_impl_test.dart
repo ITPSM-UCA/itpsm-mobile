@@ -87,13 +87,13 @@ void main() {
 
     test('Should return ServerFailure when the call to remote data source is unsuccessful', () async {     
       when(mockRemoteDataSource.login(studentEmail, studentPassword))
-        .thenThrow(ServerException());
+        .thenThrow(ServerException(title: '', message: ''));
 
       final result = await repository.login(studentEmail, studentPassword);
 
       verify(mockRemoteDataSource.login(studentEmail, studentPassword));
       verifyZeroInteractions(mockLocalDataSource);
-      expect(result, equals(const Left(ServerFailure())));
+      expect(result, equals(const Left(ServerFailure(title: '', cause: ''))));
     });
   });
 
@@ -111,13 +111,13 @@ void main() {
     
     test('Should return CacheFailure when the cached data is not present', () async {
       when(mockLocalDataSource.getLastLoginSession())
-        .thenThrow(CacheException());
+        .thenThrow(CacheException(title: '', message: ''));
 
       final result = await repository.login(studentEmail, studentPassword);
 
       verifyZeroInteractions(mockRemoteDataSource);
       verify(mockLocalDataSource.getLastLoginSession());
-      expect(result, equals(Left(CacheFailure())));
+      expect(result, equals(const Left(CacheFailure(title: '', cause: ''))));
     });
   });
 }

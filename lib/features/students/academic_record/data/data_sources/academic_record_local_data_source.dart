@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:itpsm_mobile/features/students/academic_record/data/models/students_approved_subjects_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../../core/errors/exceptions/cache/cache_exception.dart';
+import '../../../../../core/utils/constants/constants.dart';
 import '../models/students_curricula_model.dart';
 
 abstract class AcademicRecordLocalDataSource {
@@ -16,7 +20,7 @@ abstract class AcademicRecordLocalDataSource {
   /// Throws [CacheException] if no cached data is present.
   Future<List<StudentsApprovedSubjectsModel>> getLastStudentsApprovedSubjects();
   /// Caches the [StudentsApprovedSubjectsModel] obtained through the API.
-  Future<bool> cacheStudentsApprovedSubjects(StudentsApprovedSubjectsModel studentCurricula);
+  Future<bool> cacheStudentsApprovedSubjects(List<StudentsApprovedSubjectsModel> studentsApprovedSubjects);
 }
 
 class AcademicRecordLocalDataSourceImpl extends AcademicRecordLocalDataSource {
@@ -26,26 +30,51 @@ class AcademicRecordLocalDataSourceImpl extends AcademicRecordLocalDataSource {
   
   @override
   Future<bool> cacheStudentsCurricula(StudentsCurriculaModel studentCurricula) {
-    // TODO: implement cacheStudentCurricula
-    throw UnimplementedError();
+    final studentCurriculaToCache = json.encode(studentCurricula.toJson());
+    
+    return Future.value(sharedPreferences.setString(studentsCurriculaKey, studentCurriculaToCache));
   }
 
   @override
   Future<StudentsCurriculaModel> getLastStudentsCurricula() {
-    // TODO: implement getLastStudentCurricula
-    throw UnimplementedError();
+    final jsonString = sharedPreferences.getString(studentsCurriculaKey);
+
+    if(jsonString != null) {
+      return Future.value(StudentsCurriculaModel.fromJson(json.decode(jsonString)));
+    }
+    else {
+      throw CacheException(title: 'Local student\'s curricula not found', message: 'A local copy of the student\'s curricula was not found');
+    }
   }
   
   @override
-  Future<bool> cacheStudentsApprovedSubjects(StudentsApprovedSubjectsModel studentCurricula) {
-    // TODO: implement cacheStudentsApprovedSubjects
-    throw UnimplementedError();
+  Future<bool> cacheStudentsApprovedSubjects(List<StudentsApprovedSubjectsModel> studentsApprovedSubjects) {
+    final List<Map<String, dynamic>> jsonSubjects = [];
+
+    for (var subject in studentsApprovedSubjects) {
+      jsonSubjects.add(subject.toJson());
+    }
+    
+    return Future.value(sharedPreferences.setString(studentsApprovedSubjectsKey, json.encode(jsonSubjects)));
   }
   
   @override
   Future<List<StudentsApprovedSubjectsModel>> getLastStudentsApprovedSubjects() {
-    // TODO: implement getLastStudentsApprovedSubjects
-    throw UnimplementedError();
+    final jsonString = sharedPreferences.getString(studentsCurriculaKey);
+
+    if(jsonString != null) {
+      List<StudentsApprovedSubjectsModel> subjects = [];
+      final List<Map<String, dynamic>> jsonSubjects = json.decode(jsonString);
+
+      for (var subject in jsonSubjects) {
+        subjects.add(StudentsApprovedSubjectsModel.fromJson(subject));
+      }
+
+      return Future.value(subjects);
+    }
+    else {
+      throw CacheException(title: 'Local student\'s approved subjects not found', message: 'A local copy of the student\'s approved subjects was not found');
+    }
   }
 
 }

@@ -49,6 +49,8 @@ dependencies:
   json_annotation: ^4.8.0
   flutter_bloc: ^8.1.2
   email_validator: ^2.1.17
+  collection: ^1.17.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

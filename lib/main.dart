@@ -74,6 +74,7 @@ class ItpsmMobile extends StatelessWidget {
                 builder: (context, state) {
                   return MaterialApp(
                     title: 'ITPSM Mobile',
+                    debugShowCheckedModeBanner: false,
                     navigatorKey: Globals.navigatorKey,
                     builder: (context, child) => ResponsiveWrapper.builder(
                       child,

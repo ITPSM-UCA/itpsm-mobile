@@ -1,5 +1,5 @@
 name: itpsm_mobile
-description: A new Flutter project.
+description: Academic administration app for students, teachers and administritive entities.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -70,6 +70,12 @@ dev_dependencies:
   json_serializable: ^6.6.1
   mockito: ^5.3.2
   bloc_test: ^9.1.1
+
+# Flutter launcher icon configuration
+flutter_launcher_icons:
+  image_path: "launcher_icon/logo-ITPSM-p.png"
+  android: true
+  ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

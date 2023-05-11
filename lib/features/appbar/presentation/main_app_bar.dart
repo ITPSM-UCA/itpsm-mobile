@@ -7,7 +7,9 @@ import '../../authentication/presentation/bloc/authentication_bloc.dart';
 import '../../authentication/presentation/bloc/authentication_event.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MainAppBar({super.key});
+  final String appBarTitle;
+
+  const MainAppBar({super.key, required this.appBarTitle});
 
   TextButton _buildMenuItem(String text, String iconName, VoidCallback onPressed) {
     IconData icon;
@@ -17,6 +19,11 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       case logoutIcon: icon = Icons.logout_rounded; break;
       default: icon = Icons.school; break;
     }
+
+    // Changes in the API need to be done to remove this patch
+    if(text == gradesConsultation) {
+      icon = Icons.class_;
+    }
     
     return TextButton.icon(onPressed: onPressed, icon: Icon(icon, size: 25), label: Text(text));
   }
@@ -24,7 +31,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   List<TextButton> _buildAppBarActions(ResponsiveWrapperData responsive
     , AuthenticationBloc authProvider, NavigatorState navigator) {
     if(responsive.isLargerThan(TABLET)) {
-      final menu = authProvider.state.authenticatedUser?.platformMenus.map((menu) {
+      final menu = authProvider.state.authenticatedUser?.platformMenus.where((menu) => menu.name == academicRecord || menu.name == gradesConsultation).map((menu) {
         return _buildMenuItem(menu.name, menu.icon, () { navigator.pushNamed(menu.redirectTo); });
       }).toList() ?? [];
 
@@ -42,13 +49,14 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final navigator = Navigator.of(context);
     final responsive = ResponsiveWrapper.of(context);
     final authProvider = context.read<AuthenticationBloc>();
 
     return AppBar(
       elevation: 4,
-      title: const Text('ITPSM'),
+      title: Text(appBarTitle, style: TextStyle(color: theme.colorScheme.primary)),
       automaticallyImplyLeading: false,
       actions: _buildAppBarActions(responsive, authProvider, navigator),
       leading: Builder(

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.itpsm_mobile">
+    package="com.itpsm.itpsm_mobile">
    <application
         android:label="itpsm_mobile"
         android:name="${applicationName}"

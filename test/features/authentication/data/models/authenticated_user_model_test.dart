@@ -10,11 +10,13 @@ import '../../../../fixtures/fixture_reader.dart';
 void main() {
     late Map<String, dynamic> response;
     
+    // Does everything declared in this scope before running any test
     setUp(() {
       response = json.decode(readFixture('authentication', 'login_response.json'));
     });
 
     test('Should be a subclass of AuthenticatedUser entity', () async {
+      // Compares 
       expect(dummyAuthUserModel, isA<AuthenticatedUser>());
     });
 
@@ -27,13 +29,4 @@ void main() {
         expect(fromJsonAuthUserModel, dummyAuthUserModel);
       });
     });
-
-    // AuthenticatedUserModel JSON not comparable to API JSON
-    // group('AuthenticatedUserModel to JSON', () { 
-    //   test('Should return a JSON map containing an AuthenticatedUserModel', () async {
-    //     final Map<String, dynamic> jsonAuthUserModel = dummyAuthUserModel.toJson();
-
-    //     expect(jsonAuthUserModel, response);
-    //   });
-    // });
 }

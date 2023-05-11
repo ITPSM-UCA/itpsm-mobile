@@ -51,6 +51,7 @@ dependencies:
   email_validator: ^2.1.17
   collection: ^1.17.0
   intl: ^0.18.1
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:

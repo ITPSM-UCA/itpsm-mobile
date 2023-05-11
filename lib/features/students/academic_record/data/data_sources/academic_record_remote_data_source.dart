@@ -15,12 +15,12 @@ abstract class AcademicRecordRemoteDataSource {
   final String studentsCurriculaPath = 'student/student-curricula';
   final String studentsApprovedSubjectsPath = 'getacademichistory';
 
-  /// Calls the http://itpsm-api-host/api/student-curricula endpoint and gets the student's curricula.
+  /// Calls the http://itpsm-api-host/api/student-curricula/{studentId} endpoint and gets the student's curricula.
   /// 
   /// Throws a [ServerException] for all error codes.
   Future<StudentsCurriculaModel> getStudentsCurricula(int studentId, String token);
 
-  /// Calls the http://itpsm-api-host/api/enrollment/approved-subjects endpoint and gets the student's approved subjects.
+  /// Calls the http://itpsm-api-host/api/enrollment/approved-subjects/{studentId} endpoint and gets the student's approved subjects.
   /// 
   /// Throws a [ServerException] for all error codes.
   Future<List<StudentsApprovedSubjectsModel>> getStudentsApprovedSubjects(int studentId, String token);

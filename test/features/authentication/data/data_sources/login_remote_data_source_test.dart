@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
-import 'package:itpsm_mobile/core/errors/exceptions/http/server_exception.dart';
+import 'package:itpsm_mobile/core/errors/exceptions/authentication/authentication_exception.dart';
 import 'package:itpsm_mobile/features/authentication/data/data_sources/login_remote_data_source.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -26,34 +26,46 @@ void main() {
     remoteDataSource = LoginRemoteDataSourceImpl(client: mockClient);
   });
 
-  void setUpMockHttpClient200Response() {
+  void setUpMockHttpClientOkResponse() {
+    // Simulate successful login POST request
     when(mockClient.post(loginUri, body: {'email': studentEmail, 'password': studentPassword}))
         .thenAnswer((_) async => http.Response(expectedJson, 200));
+  }
+  
+  void setUpMockHttpClientErrorResponse() {
+    // Simulate unsuccessful login POST request
+    when(mockClient.post(loginUri, body: {'email': studentEmail, 'password': studentPassword}))
+        .thenAnswer((_) async => http.Response(expectedErrorJson, 401));
   }
 
   group('login', () {
     test('Should perform a POST request at $localApiPath', () async {
-      setUpMockHttpClient200Response();
+      setUpMockHttpClientOkResponse();
 
-      remoteDataSource.login(studentEmail, studentPassword);
+      // 1. Get dummy login data
+      await remoteDataSource.login(studentEmail, studentPassword);
+
+      // 2. Verify the login POST request was executed
       verify(mockClient.post(loginUri, body: {'email': studentEmail, 'password': studentPassword}));
     });
     
     test('Should return AuthenticatedUserModel when the response code is 200', () async {
-      setUpMockHttpClient200Response();
+      setUpMockHttpClientOkResponse();
 
+      // 1. Get dummy login data
       final response = await remoteDataSource.login(studentEmail, studentPassword);
       
+      // 2. Verify the remote data source returns a [AuthenticatedUserModel]
       expect(response, dummyAuthUserModel);
     });
 
-    test('Should throw ServerException when the response code is different from 200', () async {
-      when(mockClient.post(loginUri, body: {'email': studentEmail, 'password': studentPassword}))
-        .thenAnswer((_) async => http.Response(expectedErrorJson, 401));
+    test('Should throw AuthenticationException when the response code is different from 200', () async {
+      setUpMockHttpClientErrorResponse();
 
       final call = remoteDataSource.login;
       
-      expect(() => call(studentEmail, studentPassword), throwsA(const TypeMatcher<ServerException>()));
+      // 1. Verify the remote data source returns a [AuthenticationException] 
+      expect(() => call(studentEmail, studentPassword), throwsA(const TypeMatcher<AuthenticationException>()));
     });
   });
 }

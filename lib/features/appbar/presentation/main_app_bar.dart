@@ -32,7 +32,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
     , AuthenticationBloc authProvider, NavigatorState navigator) {
     if(responsive.isLargerThan(TABLET)) {
       final menu = authProvider.state.authenticatedUser?.platformMenus.where((menu) => menu.name == academicRecord || menu.name == gradesConsultation).map((menu) {
-        return _buildMenuItem(menu.name, menu.icon, () { navigator.pushNamed(menu.redirectTo); });
+        return _buildMenuItem(menu.name, menu.icon, () { navigator.pushReplacementNamed(menu.redirectTo); });
       }).toList() ?? [];
 
       if(menu.isNotEmpty) {

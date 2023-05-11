@@ -56,7 +56,7 @@ class MainDrawerScreen extends StatelessWidget {
           return _buildMenuItem(
             menu.name,
             menu.icon,
-            () { navigator.pushNamed(menu.redirectTo); },
+            () { navigator.pushReplacementNamed(menu.redirectTo); },
             theme
           );
         }).toList() ?? [],

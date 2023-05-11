@@ -47,7 +47,7 @@ class StudentsEvaluationsLocalDataSourceImpl extends StudentsEvaluationsLocalDat
       return Future.value(evaluations);
     }
     else {
-      throw CacheException(title: 'Local student\'s evaluations not found', message: 'A local copy of the student\'s evaluations were not found');
+      throw const CacheException(title: 'Local student\'s evaluations not found', message: 'A local copy of the student\'s evaluations were not found');
     }
   }
 }

@@ -47,7 +47,7 @@ class EnrollmentLocalDataSourceImpl extends EnrollmentLocalDataSource {
       return Future.value(subjects);
     }
     else {
-      throw CacheException(title: 'Local student\'s enrollments not found', message: 'A local copy of the student\'s enrollments were not found');
+      throw const CacheException(title: 'Local student\'s enrollments not found', message: 'A local copy of the student\'s enrollments were not found');
     }
   }
 }

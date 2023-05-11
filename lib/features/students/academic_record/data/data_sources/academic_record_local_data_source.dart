@@ -45,7 +45,7 @@ class AcademicRecordLocalDataSourceImpl extends AcademicRecordLocalDataSource {
       return Future.value(StudentsCurriculaModel.fromJson(json.decode(jsonString)));
     }
     else {
-      throw CacheException(title: 'Local student\'s curricula not found', message: 'A local copy of the student\'s curricula was not found');
+      throw const CacheException(title: 'Local student\'s curricula not found', message: 'A local copy of the student\'s curricula was not found');
     }
   }
   
@@ -75,7 +75,7 @@ class AcademicRecordLocalDataSourceImpl extends AcademicRecordLocalDataSource {
       return Future.value(subjects);
     }
     else {
-      throw CacheException(title: 'Local student\'s approved subjects not found', message: 'A local copy of the student\'s approved subjects were not found');
+      throw const CacheException(title: 'Local student\'s approved subjects not found', message: 'A local copy of the student\'s approved subjects were not found');
     }
   }
 

@@ -5,3 +5,7 @@ const String studentPassword = '1234';
 const String authenticatedUserKey = 'AUTHENTICATED_USER';
 const String localApiPath = 'http://localhost/api';
 const String post = 'POST';
+const String exceptionTitle = 'Exception title';
+const String exceptionMsg = 'Exception message';
+const String failureTitle = 'Failure title';
+const String failureMsg = 'Failure message';

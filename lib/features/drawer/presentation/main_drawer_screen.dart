@@ -17,6 +17,11 @@ class MainDrawerScreen extends StatelessWidget {
       default: icon = Icons.school; break;
     }
     
+    // Changes in the API need to be done to remove this patch
+    if(text == gradesConsultation) {
+      icon = Icons.class_;
+    }
+    
     return ListTile(
       onTap: onTap,
       leading: Icon(icon, size: 25),
@@ -47,7 +52,7 @@ class MainDrawerScreen extends StatelessWidget {
           )
         ),
         const SizedBox(height: 20),
-        ...authUser?.platformMenus.map((menu) {
+        ...authUser?.platformMenus.where((menu) => menu.name == academicRecord || menu.name == gradesConsultation).map((menu) {
           return _buildMenuItem(
             menu.name,
             menu.icon,

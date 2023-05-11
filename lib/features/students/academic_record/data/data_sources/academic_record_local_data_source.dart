@@ -12,6 +12,7 @@ abstract class AcademicRecordLocalDataSource {
   /// 
   /// Throws [CacheException] if no cached data is present.
   Future<StudentsCurriculaModel> getLastStudentsCurricula();
+  
   /// Caches the [StudentCurriculaModel] obtained through the API.
   Future<bool> cacheStudentsCurricula(StudentsCurriculaModel studentCurricula);
   
@@ -19,7 +20,8 @@ abstract class AcademicRecordLocalDataSource {
   /// 
   /// Throws [CacheException] if no cached data is present.
   Future<List<StudentsApprovedSubjectsModel>> getLastStudentsApprovedSubjects();
-  /// Caches the [StudentsApprovedSubjectsModel] obtained through the API.
+
+  /// Caches the [StudentsApprovedSubjectsModel] list obtained through the API.
   Future<bool> cacheStudentsApprovedSubjects(List<StudentsApprovedSubjectsModel> studentsApprovedSubjects);
 }
 
@@ -60,7 +62,7 @@ class AcademicRecordLocalDataSourceImpl extends AcademicRecordLocalDataSource {
   
   @override
   Future<List<StudentsApprovedSubjectsModel>> getLastStudentsApprovedSubjects() {
-    final jsonString = sharedPreferences.getString(studentsCurriculaKey);
+    final jsonString = sharedPreferences.getString(studentsApprovedSubjectsKey);
 
     if(jsonString != null) {
       List<StudentsApprovedSubjectsModel> subjects = [];
@@ -73,7 +75,7 @@ class AcademicRecordLocalDataSourceImpl extends AcademicRecordLocalDataSource {
       return Future.value(subjects);
     }
     else {
-      throw CacheException(title: 'Local student\'s approved subjects not found', message: 'A local copy of the student\'s approved subjects was not found');
+      throw CacheException(title: 'Local student\'s approved subjects not found', message: 'A local copy of the student\'s approved subjects were not found');
     }
   }
 

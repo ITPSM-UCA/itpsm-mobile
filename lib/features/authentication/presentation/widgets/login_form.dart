@@ -160,10 +160,11 @@ class _LoginFormState extends State<LoginForm> {
                         onFieldSubmitted: (value) { _submit(); },
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: TextButton(onPressed: () {}, child: const Text('¿Olvidaste tu contraseña?'))
-                    ),
+                    // Align(
+                    //   alignment: Alignment.centerLeft,
+                    //   child: TextButton(onPressed: () {}, child: const Text('¿Olvidaste tu contraseña?'))
+                    // ),
+                    const SizedBox(height: 20),
                     FilledButton(
                       onPressed: () {
                         _submit();

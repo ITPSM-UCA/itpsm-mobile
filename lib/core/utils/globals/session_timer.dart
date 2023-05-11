@@ -55,6 +55,7 @@ class SessionTimer {
   /// Stops the session timer and also triggers the [LogoutRequestedEvent] inside the [triggerLogoutEvent] function
   static void _sessionExpired(VoidCallback triggerLogoutEvent) {
     triggerLogoutEvent();
+    Navigator.of(Globals.navigatorKey.currentState!.context).pushNamedAndRemoveUntil("/", (route) => false);
   }
 
 

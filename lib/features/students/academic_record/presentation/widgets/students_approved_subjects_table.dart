@@ -14,6 +14,8 @@ class StudentsApprovedSubjectsTable extends StatelessWidget {
     return const [
       DataColumn2(
         label: Text('Módulo'),
+        // size: ColumnSize.L,
+        fixedWidth: 200
       ),
       DataColumn2(
         label: Text('Catedrático'),
@@ -27,6 +29,7 @@ class StudentsApprovedSubjectsTable extends StatelessWidget {
       ),
       DataColumn2(
         label: Text('Matrícula'),
+        size: ColumnSize.S,
         numeric: true
       ),
     ];

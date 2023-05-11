@@ -18,19 +18,19 @@ class _StudentAcademicInformationState extends State<StudentAcademicInformation>
   bool _isInit = true;
 
   @override
-    void didChangeDependencies() async {
-      super.didChangeDependencies();
-      
-      if(_isInit) {
-        final authUser = context.read<AuthenticationBloc>().state.authenticatedUser;
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+    
+    if(_isInit) {
+      final authUser = context.read<AuthenticationBloc>().state.authenticatedUser;
 
-        if(authUser != null) {
-          await context.read<StudentsCurriculaCubit>().loadStudentsCurricula(authUser);
-        }
-
-        setState(() { _isInit = false; });
+      if(authUser != null) {
+        await context.read<StudentsCurriculaCubit>().loadStudentsCurricula(authUser);
       }
+
+      setState(() { _isInit = false; });
     }
+  }
 
   @override
   Widget build(BuildContext context) {

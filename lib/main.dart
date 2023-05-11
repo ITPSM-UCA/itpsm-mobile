@@ -15,6 +15,7 @@ import 'package:itpsm_mobile/features/authentication/presentation/bloc/authentic
 import 'package:itpsm_mobile/features/authentication/presentation/bloc/authentication_state.dart';
 import 'package:itpsm_mobile/features/authentication/presentation/cubit/login/login_cubit.dart';
 import 'package:itpsm_mobile/features/students/academic_record/presentation/screens/academic_record_screen.dart';
+import 'package:itpsm_mobile/features/students/grades_consultation/presentation/screens/grades_consultation_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -102,7 +103,8 @@ class ItpsmMobile extends StatelessWidget {
                     home: _builderHome(state),
                     routes: {
                       // LoginScreen.routeName: (context) => const LoginScreen(),
-                      AcademicRecordScreen.routeName:(context) => const AcademicRecordScreen()
+                      AcademicRecordScreen.routeName: (context) => const AcademicRecordScreen(),
+                      GradesConsultationScreen.routeName: (context) => const GradesConsultationScreen()
                     },
                   );
                 }

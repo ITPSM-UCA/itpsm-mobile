@@ -32,6 +32,10 @@ class StudentsEvaluationsModel extends StudentsEvaluations {
   // ignore: overridden_fields
   final String subjectName;
   @override
+  @JsonKey(name: 'subject_final_core')
+  // ignore: overridden_fields
+  final double subjectFinalScore;
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   // ignore: overridden_fields
   final List<StudentsEvaluationsModel>? subevaluations;
@@ -49,8 +53,9 @@ class StudentsEvaluationsModel extends StudentsEvaluations {
     required this.periodId,
     required this.subjectId,
     required this.subjectName,
+    required this.subjectFinalScore,
     this.subevaluations = const []
-  }) : super(evaluationScore: evaluationScore, sectionId: sectionId, periodId: periodId, subjectId: subjectId, subjectName: subjectName);
+  }) : super(evaluationScore: evaluationScore, sectionId: sectionId, periodId: periodId, subjectId: subjectId, subjectName: subjectName, subjectFinalScore: subjectFinalScore);
 
   factory StudentsEvaluationsModel.fromJson(Map<String, dynamic> json) => _$StudentsEvaluationsModelFromJson(json);
 
@@ -69,6 +74,7 @@ class StudentsEvaluationsModel extends StudentsEvaluations {
     int? periodId,
     int? subjectId,
     String? subjectName,
+    double? subjectFinalScore,
     List<StudentsEvaluationsModel>? subevaluations,
   }) {
     return StudentsEvaluationsModel(
@@ -84,6 +90,7 @@ class StudentsEvaluationsModel extends StudentsEvaluations {
       periodId: periodId ?? this.periodId,
       subjectId: subjectId ?? this.subjectId,
       subjectName: subjectName ?? this.subjectName,
+      subjectFinalScore: subjectFinalScore ?? this.subjectFinalScore,
       subevaluations: subevaluations ?? this.subevaluations,
     );
   }

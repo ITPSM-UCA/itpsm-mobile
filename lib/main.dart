@@ -41,7 +41,7 @@ class ItpsmMobile extends StatelessWidget {
 
   Widget? _builderHome(AuthenticationState state) {
     if(state.status == AuthenticationStatus.authenticated) {
-      return const AcademicRecordScreen();
+      return const GradesConsultationScreen();
     }
     else {
       return const LoginScreen();

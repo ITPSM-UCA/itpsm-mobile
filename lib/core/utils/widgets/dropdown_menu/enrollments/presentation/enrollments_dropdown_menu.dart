@@ -8,6 +8,7 @@ import 'package:itpsm_mobile/core/utils/widgets/dropdown_menu/enrollments/presen
 import 'package:logger/logger.dart';
 
 import '../../../../../../features/authentication/presentation/bloc/authentication_bloc.dart';
+import '../../../../../../features/students/grades_consultation/presentation/cubit/students_evaluation_cubit.dart';
 
 class EnrollmentsDrowdownMenu extends StatefulWidget {
   const EnrollmentsDrowdownMenu({super.key});
@@ -20,6 +21,7 @@ class _EnrollmentsDrowdownMenuState extends State<EnrollmentsDrowdownMenu> {
   static final Logger logger = getLogger();
 
   bool _isInit = true;
+  bool _doFirstEvaluationsLoad = true;
   late EnrollmentModel? _selectedValue;
   List<EnrollmentModel> _enrollments = [];
 
@@ -64,6 +66,18 @@ class _EnrollmentsDrowdownMenuState extends State<EnrollmentsDrowdownMenu> {
         if(state.status == RequestStatus.loaded && state.enrollments != null && state.enrollments!.isNotEmpty) {
           setState(() {
             _enrollments = [...state.enrollments!];
+
+            if(_doFirstEvaluationsLoad) {
+              _selectedValue = _enrollments[0];
+              
+              final authUser = context.read<AuthenticationBloc>().state.authenticatedUser;
+
+              if(authUser != null) {
+                context.read<StudentsEvaluationsCubit>().loadStudentsEvaluations(authUser, _selectedValue!.id);
+              }
+
+              _doFirstEvaluationsLoad = false;
+            }
           });
         }
       },

@@ -2,9 +2,9 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:itpsm_mobile/core/utils/globals/request_status.dart';
-import 'package:itpsm_mobile/features/students/grades_consultation/presentation/widgets/students_grades_table.dart';
+import 'package:itpsm_mobile/core/utils/widgets/fieldset.dart';
+import 'package:itpsm_mobile/features/students/grades_consultation/presentation/widgets/subjects_evaluations.dart';
 
-import '../../../../../core/utils/widgets/fieldset.dart';
 import '../../data/models/students_evaluations_model.dart';
 import '../cubit/students_evaluation_cubit.dart';
 import '../cubit/students_evaluation_state.dart';
@@ -18,17 +18,58 @@ class StudentsGrades extends StatefulWidget {
 
 class _StudentsGradesState extends State<StudentsGrades> {
   List<StudentsEvaluationsModel> _evaluations = [];
+  Widget _subjectsEvaluationsView = const SizedBox();
 
   Map<String, List<StudentsEvaluationsModel>> _groupEvaluationsBySubjectName(List<StudentsEvaluationsModel> evaluations) {
     return groupBy(evaluations, (evaluation) => evaluation.subjectName);
   }
 
-  List<StudentsGradesTable> _buildStudentsGradesTable(List<StudentsEvaluationsModel> evaluations) {
-    List<StudentsGradesTable> grades = [];
+  void _buildSubjectsEvaluationsView(StudentsEvaluationsState state) {
+    if(state.status == RequestStatus.initial || state.status == RequestStatus.loading) {
+      _subjectsEvaluationsView = const CircularProgressIndicator();
+    }
+    else if(state.status == RequestStatus.failure || (state.status == RequestStatus.loaded && state.evaluations != null && state.evaluations!.isEmpty)) {
+      _subjectsEvaluationsView = const Center(child: Text('No se encontraron datos...'));
+    }
+    else {
+      _evaluations = [...state.evaluations!];
+      _subjectsEvaluationsView = Column(children: _buildSubjectsEvaluations(_evaluations, context));
+    }
+  }
+
+  List<Widget> _buildSubjectsEvaluations(List<StudentsEvaluationsModel> evaluations, BuildContext context) {
+    List<Widget> grades = [];
+    final theme = Theme.of(context);
     Map<String, List<StudentsEvaluationsModel>> groupedGrades = _groupEvaluationsBySubjectName(evaluations);
     
     groupedGrades.forEach((key, value) {
-      grades.add(StudentsGradesTable(subjectName: key, evaluations: value));
+      grades.add(
+        Fieldset(
+          child: Column(
+            children: [
+              SubjectsEvauations(subjectName: key, evaluations: value),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(5, 5, 20, 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Nota Total',
+                      style: theme.textTheme.titleSmall!.copyWith(
+                        color: theme.colorScheme.primary
+                      )
+                    ),
+                    Text(
+                      evaluations[0].subjectFinalScore.toStringAsFixed(1),
+                      style: theme.textTheme.titleSmall
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        )
+      );
     });
 
     return grades;
@@ -38,26 +79,12 @@ class _StudentsGradesState extends State<StudentsGrades> {
   Widget build(BuildContext context) {
     return BlocListener<StudentsEvaluationsCubit, StudentsEvaluationsState>(
       listener: (context, state) {
-        if(state.status == RequestStatus.loaded && state.evaluations != null && state.evaluations!.isNotEmpty) {
-          setState(() { _evaluations = [...state.evaluations!]; });
-        }
+        // if(state.status == RequestStatus.loaded && state.evaluations != null && state.evaluations!.isNotEmpty) {
+        //   setState(() { _evaluations = [...state.evaluations!]; });
+        // }
+        setState(() { _buildSubjectsEvaluationsView(state); });
       },
-      child: _evaluations.isEmpty ? const Center(child: Text('Seleccione un ciclo'))
-      : Fieldset(
-        title: '',
-        child: SingleChildScrollView(
-          child: BlocListener<StudentsEvaluationsCubit, StudentsEvaluationsState>(
-            listener: (context, state) {
-              if(state.status == RequestStatus.loaded && state.evaluations != null && state.evaluations!.isNotEmpty) {
-                setState(() { _evaluations = [...state.evaluations!]; });
-              }
-            },
-            child: Column(
-              children: _buildStudentsGradesTable(_evaluations)
-            )
-          )
-        ),
-      )
+      child: _subjectsEvaluationsView
     );
   }
 }

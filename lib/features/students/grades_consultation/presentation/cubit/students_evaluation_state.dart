@@ -16,7 +16,7 @@ class StudentsEvaluationsState extends Equatable {
   });
   
   @override
-  List<Object?> get props => [status, evaluations];
+  List<Object?> get props => [failure, status, evaluations];
 
   factory StudentsEvaluationsState.initial() {
     return const StudentsEvaluationsState(

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class Fieldset extends StatelessWidget {
   final Widget? child;
-  final String title;
+  final String? title;
   
-  const Fieldset({super.key, this.child, required this.title});
+  const Fieldset({super.key, this.child, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class Fieldset extends StatelessWidget {
         Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-          margin: const EdgeInsets.all(20),
+          margin: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(5),
@@ -29,7 +29,7 @@ class Fieldset extends StatelessWidget {
           child: Container(
             color: Colors.white,
             child: Text(
-              title,
+              title ?? '',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,

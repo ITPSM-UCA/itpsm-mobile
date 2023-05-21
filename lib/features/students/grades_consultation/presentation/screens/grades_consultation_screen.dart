@@ -89,10 +89,9 @@ class GradesConsultationScreen extends StatelessWidget {
                                         child: ElevatedButton(
                                           onPressed: () async {
                                             final selectedEnrollment = context.read<EnrollmentCubit>().state.selectedEnrollment;
-                                            if(selectedEnrollment != null) {
-                                              if(authUser != null) {
-                                                await context.read<StudentsEvaluationsCubit>().loadStudentsEvaluations(authUser, selectedEnrollment.id);
-                                              }
+
+                                            if(selectedEnrollment != null && authUser != null) {
+                                              await context.read<StudentsEvaluationsCubit>().loadStudentsEvaluations(authUser, selectedEnrollment.id);
                                             }
                                             else {
                                               ScaffoldMessengerState snackbar = ScaffoldMessenger.of(context);

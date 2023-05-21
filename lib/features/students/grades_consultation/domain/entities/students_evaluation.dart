@@ -13,6 +13,7 @@ abstract class StudentsEvaluations extends Equatable {
   final int periodId;
   final int subjectId;
   final String subjectName;
+  final double subjectFinalScore;
   final List<StudentsEvaluations>? subevaluations;
 
   const StudentsEvaluations({
@@ -28,9 +29,10 @@ abstract class StudentsEvaluations extends Equatable {
     required this.periodId,
     required this.subjectId,
     required this.subjectName,
+    required this.subjectFinalScore,
     this.subevaluations
   });
 
   @override
-  List<Object> get props => [id, name, description, date, percentage, sectionId, evaluationScore, periodId, subjectId, subjectName];
+  List<Object> get props => [id, name, description, date, percentage, sectionId, evaluationScore, periodId, subjectId, subjectName, subjectFinalScore];
 }

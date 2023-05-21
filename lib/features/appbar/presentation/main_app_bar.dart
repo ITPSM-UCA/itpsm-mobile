@@ -64,7 +64,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           return responsive.isLargerThan(TABLET) ?
           const SizedBox() :
           IconButton(
-            icon: const Icon(Icons.menu),
+            icon: Icon(Icons.menu, color: theme.colorScheme.primary),
             onPressed: () { Scaffold.of(context).openDrawer(); },
             tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
           );

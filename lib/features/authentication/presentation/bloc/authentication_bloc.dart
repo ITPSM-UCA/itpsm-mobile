@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:itpsm_mobile/core/utils/globals/globals.dart';
 import 'package:itpsm_mobile/core/utils/globals/session_timer.dart';
 import 'package:itpsm_mobile/core/utils/itpsm_utils.dart';
 import 'package:itpsm_mobile/core/utils/log/get_logger.dart';
@@ -44,6 +46,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       logger.d('Shared preferences cleared.');
 
       SessionTimer.stopTimer();
+      Navigator.of(Globals.navigatorKey.currentState!.context).pushNamedAndRemoveUntil("/", (route) => false);
 
       logger.d('Session timer stopped.');
 
@@ -59,7 +62,9 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   }
 
   void _startAutoLogout(AuthenticatedUserModel authenticatedUser) {
-    final expireDate = DateTime.now().add(const Duration(minutes: 16));
+    int minutes = DateTime.parse(authenticatedUser.expiresAt).difference(DateTime.now()).inMinutes;
+
+    final expireDate = DateTime.now().add(Duration(minutes: minutes));
 
     SessionTimer.startTimer(expireDate, () { add(LogoutRequestedEvent()); });
   }

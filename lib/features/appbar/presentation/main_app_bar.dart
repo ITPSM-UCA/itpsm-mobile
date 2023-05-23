@@ -7,9 +7,10 @@ import '../../authentication/presentation/bloc/authentication_bloc.dart';
 import '../../authentication/presentation/bloc/authentication_event.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String appBarTitle;
+  // final String appBarTitle;
+  final Widget? appBarTitle;
 
-  const MainAppBar({super.key, required this.appBarTitle});
+  const MainAppBar({super.key, this.appBarTitle});
 
   TextButton _buildMenuItem(String text, String iconName, VoidCallback onPressed) {
     IconData icon;
@@ -56,7 +57,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       elevation: 4,
-      title: Text(appBarTitle, style: TextStyle(color: theme.colorScheme.primary)),
+      title: appBarTitle,
       automaticallyImplyLeading: false,
       actions: _buildAppBarActions(responsive, authProvider, navigator),
       leading: Builder(

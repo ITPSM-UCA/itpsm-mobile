@@ -1,6 +1,7 @@
 import 'package:itpsm_mobile/features/authentication/data/models/authenticated_user_model.dart';
 import 'package:itpsm_mobile/features/authentication/data/models/authenticated_user_platform_menu_model.dart';
 import 'package:itpsm_mobile/features/authentication/data/models/authenticated_user_role_model.dart';
+import 'package:itpsm_mobile/features/students/academic_record/data/models/students_curricula_model.dart';
 
 import '../../constants/constants.dart';
 
@@ -21,4 +22,17 @@ const dummyAuthUserModel = AuthenticatedUserModel(
     AuthenticatedUserPlatformMenuModel(id: 10, name: 'Historial academico', redirectTo: 'dashboard/historial-academico', icon: 'MdSchool'),
     AuthenticatedUserPlatformMenuModel(id: 11, name: 'Ver notas', redirectTo: 'dashboard/notas', icon: 'MdSchool'),
   ]
+);
+
+const dummyStdCurriculaModel = StudentsCurriculaModel(
+  uv: 0,
+  cum: 8.9,
+  status: 'A',
+  studentId: 1,
+  entryYear: 2017,
+  curriculumId: 2,
+  scholarshipId: 2,
+  graduationYear: 2022,
+  scholarshipRate: 150,
+  cucrriculaName: 'Plan 2019-2020 de la carrera Técnico Superior en Hostelería y Turismo',
 );

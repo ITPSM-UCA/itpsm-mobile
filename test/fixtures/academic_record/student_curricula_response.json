@@ -1,0 +1,23 @@
+{
+	"data": {
+		"type": "student_curricula",
+		"attributes": [
+			{
+				"cum": 8.9,
+				"entry_year": 2017,
+				"uv": 0,
+				"cucrriculaname": "Plan 2019-2020 de la carrera Técnico Superior en Hostelería y Turismo",
+				"curriculum_id": 2,
+				"graduation_year": 2022,
+				"scholarship_rate": 150,
+				"scholarship_id": 2,
+				"status": "A",
+				"student_id": 1,
+				"uv_total": null
+			}
+		]
+	},
+	"jsonapi": {
+		"version": "1.00"
+	}
+}

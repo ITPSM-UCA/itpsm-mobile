@@ -14,20 +14,32 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../core/network/network_info.dart';
 import '../../../../../core/utils/constants/constants.dart';
+import '../../../../../core/utils/widgets/horizontal_iconed_text.dart';
+import '../../../../authentication/data/models/authenticated_user_model.dart';
 import '../../../../authentication/presentation/bloc/authentication_bloc.dart';
+import '../cubit/students_approved_subjects_cubit.dart';
 
 class AcademicRecordScreen extends StatelessWidget {
   static const routeName = '/dashboard/historial-academico';
   
   const AcademicRecordScreen({super.key});
 
+  Future<void> _refreshAcademicRecordScreen(BuildContext context, AuthenticatedUserModel authUser) async {
+    await context.read<StudentsCurriculaCubit>().loadStudentsCurricula(authUser);
+                          
+    if(context.mounted) {
+      await context.read<StudentsApprovedSubjectsCubit>().loadStudentsApprovedSubjects(authUser);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final authProvider = context.read<AuthenticationBloc>();
     final authUser = authProvider.state.authenticatedUser;
   
     return Scaffold(
-      appBar: const MainAppBar(appBarTitle: 'Historial Académico'),
+      appBar: MainAppBar(appBarTitle: Text('Historial Académico', style: TextStyle(color: theme.colorScheme.primary))),
       drawer: const MainDrawerScreen(),
       body: SizedBox.expand(
         child: FutureBuilder(
@@ -44,6 +56,9 @@ class AcademicRecordScreen extends StatelessWidget {
                   providers: [
                     BlocProvider<StudentsCurriculaCubit>(
                       create: (context) => StudentsCurriculaCubit(repository: context.read<AcademicRecordRepositoryImpl>())
+                    ),
+                    BlocProvider<StudentsApprovedSubjectsCubit>(
+                      create: (context) => StudentsApprovedSubjectsCubit(repository: context.read<AcademicRecordRepositoryImpl>())
                     )
                   ],
                   child: Builder(
@@ -51,7 +66,7 @@ class AcademicRecordScreen extends StatelessWidget {
                       return RefreshIndicator(
                         onRefresh: () async {
                           if(authUser != null) {
-                            await context.read<StudentsCurriculaCubit>().loadStudentsCurricula(authUser);
+                            await _refreshAcademicRecordScreen(context, authUser);
                           }
                         },
                         child: SingleChildScrollView(
@@ -59,20 +74,29 @@ class AcademicRecordScreen extends StatelessWidget {
                             children: [
                               Container(
                                 alignment: Alignment.centerLeft,
-                                padding: const EdgeInsets.all(15),
-                                child: Text(
-                                  authUser?.name ?? defaultString,
-                                  style: Theme.of(context).textTheme.titleMedium,
+                                padding: const EdgeInsets.all(10),
+                                child: HorizontalIconedText(
+                                  icon: Icons.school,
+                                  iconColor: theme.colorScheme.primary,
+                                  text: authUser?.name ?? defaultString,
+                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                    color: theme.colorScheme.primary,
+                                  ),
                                 ),
+                                // child: Text(
+                                //   authUser?.name ?? defaultString,
+                                //   style: Theme.of(context).textTheme.titleMedium,
+                                // ),
                               ),
                               const StudentAcademicInformation(),
-                              ConstrainedBox(
-                                constraints: const BoxConstraints.expand(
-                                  width: double.infinity,
-                                  height: 500
-                                ),
-                                child: const StudentsApprovedSubjects(),
-                              )
+                              const StudentsApprovedSubjects()
+                              // ConstrainedBox(
+                              //   constraints: const BoxConstraints.expand(
+                              //     width: double.infinity,
+                              //     height: 500
+                              //   ),
+                              //   child: const StudentsApprovedSubjects(),
+                              // )
                             ],
                           ),
                         ),

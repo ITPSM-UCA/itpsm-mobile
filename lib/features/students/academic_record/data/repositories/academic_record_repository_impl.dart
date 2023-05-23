@@ -51,6 +51,9 @@ class AcademicRecordRepositoryImpl extends AcademicRecordRepository {
       } on CacheException catch (e) {
         logger.e('Cache failure when trying to retrieve local copy of student $studentId curricula.', e);
         return Left(CacheFailure(title: e.title, cause: e.message));
+      } catch(e) {
+        logger.e('Failure when trying to retrieve local copy of $studentId curricula. Reason unknown.', e);
+        return const Left(ServerFailure(title: 'Error', cause: 'Something went wrong...'));
       }
     }
   }
@@ -79,6 +82,9 @@ class AcademicRecordRepositoryImpl extends AcademicRecordRepository {
       } on CacheException catch (e) {
         logger.e('Cache failure when trying to retrieve local copy of student $studentId approved subjects.', e);
         return Left(CacheFailure(title: e.title, cause: e.message));
+      } catch(e) {
+        logger.e('Failure when trying to retrieve local copy of student $studentId approved subjects. Reason unknown.', e);
+        return const Left(ServerFailure(title: 'Error', cause: 'Something went wrong...'));
       }
     }
   }

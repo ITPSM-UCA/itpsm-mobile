@@ -1,6 +1,7 @@
 import 'package:itpsm_mobile/features/authentication/data/models/authenticated_user_model.dart';
 import 'package:itpsm_mobile/features/authentication/data/models/authenticated_user_platform_menu_model.dart';
 import 'package:itpsm_mobile/features/authentication/data/models/authenticated_user_role_model.dart';
+import 'package:itpsm_mobile/features/students/academic_record/data/models/students_approved_subjects_model.dart';
 import 'package:itpsm_mobile/features/students/academic_record/data/models/students_curricula_model.dart';
 
 import '../../constants/constants.dart';
@@ -36,3 +37,24 @@ const dummyStdCurriculaModel = StudentsCurriculaModel(
   scholarshipRate: 150,
   cucrriculaName: 'Plan 2019-2020 de la carrera Técnico Superior en Hostelería y Turismo',
 );
+
+const dummyStdApdSubModel = [
+  StudentsApprovedSubjectsModel(
+    name: 'Preparación de Bebidas',
+    finalScore: 8.5,
+    isApproved: 1,
+    teacherName: 'Nickolas Brown',
+    enrollment: 1,
+    periodCode: 3,
+    periodYear: 2022
+  ),
+  StudentsApprovedSubjectsModel(
+    name: 'Procesos Constructivos para Viviendas',
+    finalScore: 5.6,
+    isApproved: 1,
+    teacherName: 'Alison Erdman',
+    enrollment: 4,
+    periodCode: 2,
+    periodYear: 2022
+  ),
+];

@@ -22,110 +22,116 @@ import '../cubit/students_evaluation_cubit.dart';
 class GradesConsultationScreen extends StatelessWidget {
   static const routeName = '/dashboard/notas';
 
-  final String title = '';
-
   const GradesConsultationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final authUser = context.read<AuthenticationBloc>().state.authenticatedUser;
+    // final theme = Theme.of(context);
+    // final authUser = context.read<AuthenticationBloc>().state.authenticatedUser;
 
-    return Scaffold(
-      appBar: const MainAppBar(appBarTitle: 'Ver Notas'),
-      drawer: const MainDrawerScreen(),
-      body: SizedBox.expand(
-        child: FutureBuilder(
-          future: SharedPreferences.getInstance(),
-          builder: (context, snapshot) {
-            if(snapshot.hasData && snapshot.data != null) {
-                return MultiRepositoryProvider(
-                  providers: [
-                    RepositoryProvider(
-                      create: (context) => EnrollmentRepositoryImpl(
-                        network: NetworkInfoImpl(connectionChecker: InternetConnectionChecker()),
-                        localDataSource: EnrollmentLocalDataSourceImpl(sharedPreferences: snapshot.data!),
-                        remoteDataSource: EnrollmentRemoteDataSourceImpl(client: http.Client())
-                      )
-                    ),
-                    RepositoryProvider(
-                      create: (context) => StudentsEvaluationsRepositoryImpl(
-                        network: NetworkInfoImpl(connectionChecker: InternetConnectionChecker()),
-                        localDataSource: StudentsEvaluationsLocalDataSourceImpl(sharedPreferences: snapshot.data!),
-                        remoteDataSource: StudentsEvaluationsRemoteDataSourceImpl(client: http.Client())
-                      )
-                    ),
-                  ],
-                  child: MultiBlocProvider(
-                    providers: [
-                      BlocProvider<EnrollmentCubit>(
-                        create: (context) => EnrollmentCubit(repository: context.read<EnrollmentRepositoryImpl>()),
-                      ),
-                      BlocProvider<StudentsEvaluationsCubit>(
-                        create: (context) => StudentsEvaluationsCubit(repository: context.read<StudentsEvaluationsRepositoryImpl>()),
-                      ),
-                    ],
-                    child: Builder(
-                      builder: (context) {
-                        return SingleChildScrollView(
-                          child: Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Column(
-                              children: [
-                                ConstrainedBox(
-                                  constraints: const BoxConstraints(
-                                    minWidth: 240,
-                                    maxWidth: 300,
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const Expanded(child: Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: EnrollmentsDrowdownMenu(),
-                                      )),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: ElevatedButton(
-                                          onPressed: () async {
-                                            final selectedEnrollment = context.read<EnrollmentCubit>().state.selectedEnrollment;
-
-                                            if(selectedEnrollment != null && authUser != null) {
-                                              await context.read<StudentsEvaluationsCubit>().loadStudentsEvaluations(authUser, selectedEnrollment.id);
-                                            }
-                                            else {
-                                              ScaffoldMessengerState snackbar = ScaffoldMessenger.of(context);
-
-                                              snackbar.hideCurrentSnackBar();
-                                              snackbar.showSnackBar(const SnackBar(
-                                                duration: Duration(seconds: 2),
-                                                content: Text('Se debe seleccionar un ciclo.'),
-                                                dismissDirection: DismissDirection.endToStart,
-                                              ));
-                                            }
-                                          },
-                                          child: const Text('Filtrar')
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                const StudentsGrades()
-                              ],
-                            ),
-                          ),
-                        );
-                      }
-                    )
+    return FutureBuilder(
+      future: SharedPreferences.getInstance(),
+      builder: (context, snapshot) {
+        if(snapshot.hasData && snapshot.data != null) {
+            return MultiRepositoryProvider(
+              providers: [
+                RepositoryProvider(
+                  create: (context) => EnrollmentRepositoryImpl(
+                    network: NetworkInfoImpl(connectionChecker: InternetConnectionChecker()),
+                    localDataSource: EnrollmentLocalDataSourceImpl(sharedPreferences: snapshot.data!),
+                    remoteDataSource: EnrollmentRemoteDataSourceImpl(client: http.Client())
                   )
-                );
-            }
-            else {
-              return const CircularProgressIndicator();
-            }
-          }
-        ),
-      ),
+                ),
+                RepositoryProvider(
+                  create: (context) => StudentsEvaluationsRepositoryImpl(
+                    network: NetworkInfoImpl(connectionChecker: InternetConnectionChecker()),
+                    localDataSource: StudentsEvaluationsLocalDataSourceImpl(sharedPreferences: snapshot.data!),
+                    remoteDataSource: StudentsEvaluationsRemoteDataSourceImpl(client: http.Client())
+                  )
+                ),
+              ],
+              child: MultiBlocProvider(
+                providers: [
+                  BlocProvider<EnrollmentCubit>(
+                    create: (context) => EnrollmentCubit(repository: context.read<EnrollmentRepositoryImpl>()),
+                  ),
+                  BlocProvider<StudentsEvaluationsCubit>(
+                    create: (context) => StudentsEvaluationsCubit(repository: context.read<StudentsEvaluationsRepositoryImpl>()),
+                  ),
+                ],
+                child: Builder(
+                  builder: (context) {
+                    return Scaffold(
+                      appBar: MainAppBar(
+                        appBarTitle: ConstrainedBox(
+                          constraints: const BoxConstraints(
+                            minWidth: 150,
+                            maxWidth: 150,
+                          ),
+                          child: const EnrollmentsDrowdownMenu()
+                        )
+                      ),
+                      drawer: const MainDrawerScreen(),
+                      body: const SizedBox.expand(
+                        child: Padding(
+                          padding: EdgeInsets.all(15),
+                          child: StudentsGrades()
+                          // child: Column(
+                          //   children: [
+                          //     ConstrainedBox(
+                          //       constraints: const BoxConstraints(
+                          //         minWidth: 240,
+                          //         maxWidth: 300,
+                          //       ),
+                          //       child: Row(
+                          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //         crossAxisAlignment: CrossAxisAlignment.start,
+                          //         children: [
+                          //           const Expanded(child: Padding(
+                          //             padding: EdgeInsets.all(8),
+                          //             child: EnrollmentsDrowdownMenu(),
+                          //           )),
+                          //           Padding(
+                          //             padding: const EdgeInsets.all(8.0),
+                          //             child: ElevatedButton(
+                          //               onPressed: () async {
+                          //                 final selectedEnrollment = context.read<EnrollmentCubit>().state.selectedEnrollment;
+                                            
+                          //                 if(selectedEnrollment != null && authUser != null) {
+                          //                   await context.read<StudentsEvaluationsCubit>().loadStudentsEvaluations(authUser, selectedEnrollment.id);
+                          //                 }
+                          //                 else {
+                          //                   ScaffoldMessengerState snackbar = ScaffoldMessenger.of(context);
+                                            
+                          //                   snackbar.hideCurrentSnackBar();
+                          //                   snackbar.showSnackBar(const SnackBar(
+                          //                     duration: Duration(seconds: 2),
+                          //                     content: Text('Se debe seleccionar un ciclo.'),
+                          //                     dismissDirection: DismissDirection.endToStart,
+                          //                   ));
+                          //                 }
+                          //               },
+                          //               child: const Text('Filtrar')
+                          //             ),
+                          //           )
+                          //         ],
+                          //       ),
+                          //     ),
+                          //     const StudentsGrades()
+                          //   ],
+                          // ),
+                        ),
+                      ),
+                    );
+                  }
+                )
+              )
+            );
+        }
+        else {
+          return const CircularProgressIndicator();
+        }
+      }
     );
   }
 }

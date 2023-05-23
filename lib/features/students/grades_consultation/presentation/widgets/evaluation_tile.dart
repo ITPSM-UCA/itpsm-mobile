@@ -12,20 +12,22 @@ class EvaluationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isApproved = evaluation.evaluationScore > 6;
     final hasSubevaluations = evaluation.subevaluations != null && evaluation.subevaluations!.isNotEmpty;
 
     return Column(
       children: [
         ListTile(
           leading: CircleAvatar(
-            backgroundColor: isSubevaluation ? theme.colorScheme.secondary
-            : theme.colorScheme.primary,
+            backgroundColor: isSubevaluation ? isApproved ? theme.colorScheme.secondary : theme.colorScheme.secondaryContainer
+            : isApproved ? theme.colorScheme.primary : theme.colorScheme.inversePrimary,
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: FittedBox(child: Text(
                 evaluation.evaluationScore.toStringAsFixed(1),
                 style: TextStyle(
-                  color: theme.colorScheme.onPrimary
+                  color: isApproved ?  Colors.lightGreenAccent : theme.colorScheme.error
+                  // : theme.colorScheme.copyWith(error: Colors.redAccent).error
                 ),
               )),
             ),

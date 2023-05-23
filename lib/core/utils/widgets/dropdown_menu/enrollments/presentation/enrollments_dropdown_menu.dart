@@ -25,13 +25,19 @@ class _EnrollmentsDrowdownMenuState extends State<EnrollmentsDrowdownMenu> {
   late EnrollmentModel? _selectedValue;
   List<EnrollmentModel> _enrollments = [];
 
-  void _dropdownCallback(EnrollmentModel? selectedValue) {
+  void _dropdownCallback(EnrollmentModel? selectedValue) async {
     logger.d('Selected Enrollment ${selectedValue?.toJson()}');
+    
+    final authUser = context.read<AuthenticationBloc>().state.authenticatedUser;
 
     if(selectedValue != null) {
       context.read<EnrollmentCubit>().selectEnrollment(selectedValue);
-
+      
       setState(() { _selectedValue = selectedValue; });
+
+      if(authUser != null) {
+        await context.read<StudentsEvaluationsCubit>().loadStudentsEvaluations(authUser, selectedValue.id);
+      }
     }
   }
 

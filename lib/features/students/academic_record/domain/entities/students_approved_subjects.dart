@@ -15,6 +15,8 @@ abstract class StudentsApprovedSubjects extends Equatable {
   // final String curriculumLabel;
   // final String careerLabel;
   final String teacherName;
+  final int periodCode;
+  final int periodYear;
 
   const StudentsApprovedSubjects({
     required this.name,
@@ -29,7 +31,9 @@ abstract class StudentsApprovedSubjects extends Equatable {
     // required this.curriculumSubjectLabel, 
     // required this.curriculumLabel, 
     // required this.careerLabel, 
-    required this.teacherName
+    required this.teacherName,
+    required this.periodCode,
+    required this.periodYear
   });
 
   @override
@@ -47,6 +51,8 @@ abstract class StudentsApprovedSubjects extends Equatable {
       // curriculumLabel,
       // careerLabel,
       teacherName,
+      periodCode,
+      periodYear
     ];
   }
 }

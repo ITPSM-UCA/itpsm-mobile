@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../domain/entities/students_approved_subjects.dart';
@@ -22,14 +23,14 @@ class StudentsApprovedSubjectsModel extends StudentsApprovedSubjects {
   // @JsonKey(name: 'period_id')
   // // ignore: overridden_fields
   // final int periodId;
-  // @override
-  // @JsonKey(name: 'period_year')
-  // // ignore: overridden_fields
-  // final int periodYear;
-  // @override
-  // @JsonKey(name: 'period_code')
-  // // ignore: overridden_fields
-  // final int periodCode;
+  @override
+  @JsonKey(name: 'period_year')
+  // ignore: overridden_fields
+  final int periodYear;
+  @override
+  @JsonKey(name: 'period_code')
+  // ignore: overridden_fields
+  final int periodCode;
   // @override
   // @JsonKey(name: 'curriculum_subject_label')
   // // ignore: overridden_fields
@@ -55,8 +56,8 @@ class StudentsApprovedSubjectsModel extends StudentsApprovedSubjects {
     // required this.periodId, 
     // required super.code, 
     required super.enrollment, 
-    // required this.periodYear, 
-    // required this.periodCode, 
+    required this.periodYear, 
+    required this.periodCode, 
     // required this.curriculumSubjectLabel, 
     // required this.curriculumLabel, 
     // required this.careerLabel, 
@@ -66,13 +67,25 @@ class StudentsApprovedSubjectsModel extends StudentsApprovedSubjects {
     isApproved: isApproved, 
     // curriculumSubjectId: curriculumSubjectId, 
     // periodId: periodId, 
-    // periodYear: periodYear, 
-    // periodCode: periodCode, 
+    periodYear: periodYear, 
+    periodCode: periodCode, 
     // curriculumSubjectLabel: curriculumSubjectLabel, 
     // curriculumLabel: curriculumLabel, 
     // careerLabel: careerLabel, 
     teacherName: teacherName
   );
+
+  factory StudentsApprovedSubjectsModel.emptyDummy() {
+    return const StudentsApprovedSubjectsModel(
+      name: 'Preparación de bebidas',
+      isApproved: 1,
+      enrollment: 4,
+      finalScore: 9,
+      teacherName: 'Arthur Morgan',
+      periodCode: 1,
+      periodYear: 2023
+    );
+  }
 
   factory StudentsApprovedSubjectsModel.fromJson(Map<String, dynamic> json) => _$StudentsApprovedSubjectsModelFromJson(json);
 
@@ -84,5 +97,25 @@ class StudentsApprovedSubjectsModel extends StudentsApprovedSubjects {
       case 1: return 'Aprobada';
       default: return 'Pendiente'; 
     }
+  }
+
+  StudentsApprovedSubjectsModel copyWith({
+    double? finalScore,
+    int? isApproved,
+    int? periodYear,
+    int? periodCode,
+    String? teacherName,
+    int? enrollment,
+    String? name,
+  }) {
+    return StudentsApprovedSubjectsModel(
+      finalScore: finalScore ?? this.finalScore,
+      isApproved: isApproved ?? this.isApproved,
+      periodYear: periodYear ?? this.periodYear,
+      periodCode: periodCode ?? this.periodCode,
+      teacherName: teacherName ?? this.teacherName,
+      enrollment: enrollment ?? super.enrollment,
+      name: name ?? super.name
+    );
   }
 }

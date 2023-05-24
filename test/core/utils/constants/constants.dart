@@ -9,3 +9,5 @@ const String exceptionTitle = 'Exception title';
 const String exceptionMsg = 'Exception message';
 const String failureTitle = 'Failure title';
 const String failureMsg = 'Failure message';
+const String token = 'token';
+const int studentId = 1;

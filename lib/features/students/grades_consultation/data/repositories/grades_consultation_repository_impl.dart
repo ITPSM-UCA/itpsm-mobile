@@ -53,10 +53,10 @@ class GradesConsultationRepositoryImpl extends GradesConsultationRepository {
   }
 
   @override
-  Future<Either<Failure, List<StudentsEvaluationsModel>>> getStudentsEvaluations(int studentId, String token, int periodId,) async {
+  Future<Either<Failure, List<StudentsEvaluationsModel>>> getStudentsEvaluations(int studentId, int periodId, String token) async {
     if(await network.isConnected) {
       try {  
-        final studentsEvaluations = _linkSubevaluations(await remoteDataSource.getstudentsEvaluations(studentId, periodId, token));
+        final studentsEvaluations = _linkSubevaluations(await remoteDataSource.getStudentsEvaluations(studentId, periodId, token));
 
         localDataSource.cacheStudentsEvaluations(studentsEvaluations);
         return Right(studentsEvaluations);

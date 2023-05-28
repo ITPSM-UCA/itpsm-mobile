@@ -1,0 +1,48 @@
+{
+	"data": {
+		"type": "evaluations",
+		"attributes": [
+			{
+				"id": 1,
+				"name": "Parcial 1",
+				"secondary": null,
+				"description": "Parcial 1",
+				"date": "2022-02-02",
+				"level": 1,
+				"principal_id": null,
+				"percentage": 25,
+				"section_id": 1,
+				"is_public": 1,
+				"status": null,
+				"evaluation_score": 8,
+				"is_approved": 0,
+				"period_id": 3,
+				"subject_id": 37,
+				"subject_name": "Preparación de Bebidas",
+				"subject_final_core": 8.5
+			},
+			{
+				"id": 3,
+				"name": "Parcial 2",
+				"secondary": null,
+				"description": "Parcial 2",
+				"date": "2022-02-05",
+				"level": 1,
+				"principal_id": null,
+				"percentage": 25,
+				"section_id": 1,
+				"is_public": 1,
+				"status": null,
+				"evaluation_score": 10,
+				"is_approved": 0,
+				"period_id": 3,
+				"subject_id": 37,
+				"subject_name": "Preparación de Bebidas",
+				"subject_final_core": 8.5
+			}
+		]
+	},
+	"jsonapi": {
+		"version": "1.00"
+	}
+}

@@ -1,0 +1,10 @@
+{
+    "errors": {
+        "status": "401",
+        "title": "Oops! Parece que hubo un error.",
+        "detail": "Inscripciones del estudiante no encontradas."
+    },
+    "jsonapi": {
+        "version": "1.00"
+    }
+}

@@ -26,12 +26,12 @@ abstract class AcademicRecordRemoteDataSource {
   Future<List<StudentsApprovedSubjectsModel>> getStudentsApprovedSubjects(int studentId, String token);
 }
 
-class AcademicRecordDataSourceImpl extends AcademicRecordRemoteDataSource {
+class AcademicRecordRemoteDataSourceImpl extends AcademicRecordRemoteDataSource {
   static final Logger logger = getLogger();
   
   final http.Client client;
 
-  AcademicRecordDataSourceImpl({required this.client});
+  AcademicRecordRemoteDataSourceImpl({required this.client});
   
   @override
   Future<StudentsCurriculaModel> getStudentsCurricula(int studentId, String token) async {

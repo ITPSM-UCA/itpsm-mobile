@@ -50,7 +50,7 @@ class AcademicRecordScreen extends StatelessWidget {
                 create: (context) => AcademicRecordRepositoryImpl(
                   network: NetworkInfoImpl(connectionChecker: InternetConnectionChecker()),
                   localDataSource: AcademicRecordLocalDataSourceImpl(sharedPreferences: snapshot.data!),
-                  remoteDataSource: AcademicRecordDataSourceImpl(client: http.Client())
+                  remoteDataSource: AcademicRecordRemoteDataSourceImpl(client: http.Client())
                 ),
                 child: MultiBlocProvider(
                   providers: [

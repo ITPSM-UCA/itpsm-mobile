@@ -1,0 +1,31 @@
+{
+	"data": {
+		"type": "enrollments",
+		"attributes": {
+			"success": true,
+			"enrollment": [
+				{
+					"id": 2,
+					"code": 2,
+					"year": 2022,
+					"status": "C",
+					"created_at": "2023-04-12 14:25:00",
+					"updated_at": "2023-04-12 14:25:00",
+					"deleted_at": null
+				},
+				{
+					"id": 3,
+					"code": 3,
+					"year": 2022,
+					"status": "A",
+					"created_at": "2023-04-12 14:25:00",
+					"updated_at": "2023-04-12 14:25:00",
+					"deleted_at": null
+				}
+			]
+		}
+	},
+	"jsonapi": {
+		"version": "1.00"
+	}
+}

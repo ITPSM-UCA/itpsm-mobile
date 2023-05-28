@@ -3,6 +3,7 @@ import 'package:itpsm_mobile/features/authentication/data/models/authenticated_u
 import 'package:itpsm_mobile/features/authentication/data/models/authenticated_user_role_model.dart';
 import 'package:itpsm_mobile/features/students/academic_record/data/models/students_approved_subjects_model.dart';
 import 'package:itpsm_mobile/features/students/academic_record/data/models/students_curricula_model.dart';
+import 'package:itpsm_mobile/features/students/grades_consultation/data/models/enrollment_model.dart';
 import 'package:itpsm_mobile/features/students/grades_consultation/data/models/students_evaluations_model.dart';
 
 import '../../constants/constants.dart';
@@ -58,50 +59,61 @@ const dummyStdCurriculaModel = StudentsCurriculaModel(
 
 const dummyStdApdSubModel = [
   StudentsApprovedSubjectsModel(
-    name: 'Preparación de Bebidas',
-    finalScore: 8.5,
-    isApproved: 1,
-    teacherName: 'Nickolas Brown',
-    enrollment: 1,
-    periodCode: 3,
-    periodYear: 2022
-  ),
+      name: 'Preparación de Bebidas',
+      finalScore: 8.5,
+      isApproved: 1,
+      teacherName: 'Nickolas Brown',
+      enrollment: 1,
+      periodCode: 3,
+      periodYear: 2022),
   StudentsApprovedSubjectsModel(
-    name: 'Procesos Constructivos para Viviendas',
-    finalScore: 5.6,
-    isApproved: 1,
-    teacherName: 'Alison Erdman',
-    enrollment: 4,
-    periodCode: 2,
-    periodYear: 2022
-  )
+      name: 'Procesos Constructivos para Viviendas',
+      finalScore: 5.6,
+      isApproved: 1,
+      teacherName: 'Alison Erdman',
+      enrollment: 4,
+      periodCode: 2,
+      periodYear: 2022)
 ];
 
 final dummyStdEvsModel = [
   StudentsEvaluationsModel(
-    id: 1,
-    name: 'Parcial 1',
-    description: 'Parcial 1',
-    date: DateTime.parse('2022-02-02'),
-    percentage: 25,
-    sectionId: 1,
-    evaluationScore: 8,
-    periodId: 3,
-    subjectId: 37,
-    subjectName: 'Preparación de Bebidas',
-    subjectFinalScore: 8.5
-  ),
+      id: 1,
+      name: 'Parcial 1',
+      description: 'Parcial 1',
+      date: DateTime.parse('2022-02-02'),
+      percentage: 25,
+      sectionId: 1,
+      evaluationScore: 8,
+      periodId: 3,
+      subjectId: 37,
+      subjectName: 'Preparación de Bebidas',
+      subjectFinalScore: 8.5),
   StudentsEvaluationsModel(
-    id: 3,
-    name: 'Parcial 2',
-    description: 'Parcial 2',
-    date: DateTime.parse('2022-02-05'),
-    percentage: 25,
-    sectionId: 1,
-    evaluationScore: 10,
-    periodId: 3,
-    subjectId: 37,
-    subjectName: 'Preparación de Bebidas',
-    subjectFinalScore: 8.5
+      id: 3,
+      name: 'Parcial 2',
+      description: 'Parcial 2',
+      date: DateTime.parse('2022-02-05'),
+      percentage: 25,
+      sectionId: 1,
+      evaluationScore: 10,
+      periodId: 3,
+      subjectId: 37,
+      subjectName: 'Preparación de Bebidas',
+      subjectFinalScore: 8.5)
+];
+
+const dummyStdEmts = [
+  EnrollmentModel(
+    id: 2, 
+    code: 2, 
+    year: 2022, 
+    status: 'C'
+  ),
+  EnrollmentModel(
+    id: 3, 
+    code: 3, 
+    year: 2022, 
+    status: 'A'
   )
 ];

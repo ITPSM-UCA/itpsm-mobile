@@ -66,7 +66,7 @@ class AcademicRecordLocalDataSourceImpl extends AcademicRecordLocalDataSource {
 
     if(jsonString != null) {
       List<StudentsApprovedSubjectsModel> subjects = [];
-      final List<Map<String, dynamic>> jsonSubjects = json.decode(jsonString);
+      final List<Map<String, dynamic>> jsonSubjects = (json.decode(jsonString) as List).map((e) => e as Map<String, dynamic>).toList();
 
       for (var subject in jsonSubjects) {
         subjects.add(StudentsApprovedSubjectsModel.fromJson(subject));

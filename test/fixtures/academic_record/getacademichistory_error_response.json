@@ -1,0 +1,10 @@
+{
+    "errors": {
+        "status": "401",
+        "title": "Oops! Parece que hubo un error.",
+        "detail": "Historial académico del estudiante no encontrado."
+    },
+    "jsonapi": {
+        "version": "1.00"
+    }
+}

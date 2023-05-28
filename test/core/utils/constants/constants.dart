@@ -10,6 +10,7 @@ const String failureTitle = 'Failure title';
 const String failureMsg = 'Failure message';
 const String token = 'token';
 const int studentId = 1;
+const int periodId = 1;
 
 // Keys for SharedPreferences objects retrieval
 const String authenticatedUserKey = 'AUTHENTICATED_USER';

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:itpsm_mobile/core/utils/globals/request_status.dart';
 import 'package:itpsm_mobile/core/utils/log/get_logger.dart';
-import 'package:itpsm_mobile/core/utils/widgets/dropdown_menu/enrollments/data/models/enrollment_model.dart';
-import 'package:itpsm_mobile/core/utils/widgets/dropdown_menu/enrollments/presentation/cubit/enrollment_cubit.dart';
-import 'package:itpsm_mobile/core/utils/widgets/dropdown_menu/enrollments/presentation/cubit/enrollment_state.dart';
 import 'package:logger/logger.dart';
 
 import '../../../../../../features/authentication/presentation/bloc/authentication_bloc.dart';
-import '../../../../../../features/students/grades_consultation/presentation/cubit/students_evaluation_cubit.dart';
+import '../../data/models/enrollment_model.dart';
+import '../cubit/enrollment/enrollment_cubit.dart';
+import '../cubit/enrollment/enrollment_state.dart';
+import '../cubit/students_evaluations/students_evaluation_cubit.dart';
 
 class EnrollmentsDrowdownMenu extends StatefulWidget {
   const EnrollmentsDrowdownMenu({super.key});

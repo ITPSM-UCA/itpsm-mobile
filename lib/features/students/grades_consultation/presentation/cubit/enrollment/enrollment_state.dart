@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:itpsm_mobile/core/utils/globals/request_status.dart';
-import 'package:itpsm_mobile/core/utils/widgets/dropdown_menu/enrollments/data/models/enrollment_model.dart';
 
-import '../../../../../../errors/failures/failure.dart';
+import '../../../../../../core/errors/failures/failure.dart';
+import '../../../data/models/enrollment_model.dart';
 
 class EnrollmentState extends Equatable {
   final Failure? failure;

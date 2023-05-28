@@ -2,14 +2,14 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:itpsm_mobile/core/utils/globals/request_status.dart';
-import 'package:itpsm_mobile/core/utils/widgets/dropdown_menu/enrollments/presentation/cubit/enrollment_cubit.dart';
 import 'package:itpsm_mobile/core/utils/widgets/fieldset.dart';
 import 'package:itpsm_mobile/features/students/grades_consultation/presentation/widgets/subjects_evaluations.dart';
 
 import '../../../../authentication/presentation/bloc/authentication_bloc.dart';
 import '../../data/models/students_evaluations_model.dart';
-import '../cubit/students_evaluation_cubit.dart';
-import '../cubit/students_evaluation_state.dart';
+import '../cubit/enrollment/enrollment_cubit.dart';
+import '../cubit/students_evaluations/students_evaluation_cubit.dart';
+import '../cubit/students_evaluations/students_evaluation_state.dart';
 
 class StudentsGrades extends StatefulWidget {
   const StudentsGrades({super.key});

@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../../../core/errors/failures/failure.dart';
-import '../../../../../core/utils/globals/request_status.dart';
-import '../../data/models/students_evaluations_model.dart';
+import '../../../../../../core/errors/failures/failure.dart';
+import '../../../../../../core/utils/globals/request_status.dart';
+import '../../../data/models/students_evaluations_model.dart';
 
 class StudentsEvaluationsState extends Equatable {
   final Failure? failure;

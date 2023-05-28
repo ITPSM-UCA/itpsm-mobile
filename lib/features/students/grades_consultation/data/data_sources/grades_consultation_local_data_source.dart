@@ -4,9 +4,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../core/errors/exceptions/cache/cache_exception.dart';
 import '../../../../../core/utils/constants/constants.dart';
+import '../models/enrollment_model.dart';
 import '../models/students_evaluations_model.dart';
 
-abstract class StudentsEvaluationsLocalDataSource {
+abstract class GradesConsultationLocalDataSource {
+  /// Gets the cached [EnrollmentModel] list which was gotten the last time.
+  /// 
+  /// Throws [CacheException] if no cached data is present.
+  Future<List<EnrollmentModel>> getLastStudentsEnrollments();
+  
+  /// Caches the [EnrollmentModel] list obtained through the API.
+  Future<bool> cacheStudentsEnrollments(List<EnrollmentModel> studentsEnrollments);
+  
   /// Gets the cached [StudentsEvaluationsModel] list which was gotten the last time.
   /// 
   /// Throws [CacheException] if no cached data is present.
@@ -16,10 +25,40 @@ abstract class StudentsEvaluationsLocalDataSource {
   Future<bool> cacheStudentsEvaluations(List<StudentsEvaluationsModel> studentsEvaluations);
 }
 
-class StudentsEvaluationsLocalDataSourceImpl extends StudentsEvaluationsLocalDataSource {
+class GradesConsultationLocalDataSourceImpl extends GradesConsultationLocalDataSource {
   final SharedPreferences sharedPreferences;
 
-  StudentsEvaluationsLocalDataSourceImpl({required this.sharedPreferences});
+  GradesConsultationLocalDataSourceImpl({required this.sharedPreferences});
+
+  @override
+  Future<bool> cacheStudentsEnrollments(List<EnrollmentModel> studentsEnrollments) {
+    final List<Map<String, dynamic>> jsonSubjects = [];
+
+    for (var enrollment in studentsEnrollments) {
+      jsonSubjects.add(enrollment.toJson());
+    }
+    
+    return Future.value(sharedPreferences.setString(studentsEnrollmentsKey, json.encode(jsonSubjects)));
+  }
+  
+  @override
+  Future<List<EnrollmentModel>> getLastStudentsEnrollments() {
+    final jsonString = sharedPreferences.getString(studentsEnrollmentsKey);
+
+    if(jsonString != null) {
+      List<EnrollmentModel> subjects = [];
+      final List<Map<String, dynamic>> jsonSubjects = json.decode(jsonString);
+
+      for (var subject in jsonSubjects) {
+        subjects.add(EnrollmentModel.fromJson(subject));
+      }
+
+      return Future.value(subjects);
+    }
+    else {
+      throw const CacheException(title: 'Local student\'s enrollments not found', message: 'A local copy of the student\'s enrollments were not found');
+    }
+  }
 
   @override
   Future<bool> cacheStudentsEvaluations(List<StudentsEvaluationsModel> studentsEvaluations) {

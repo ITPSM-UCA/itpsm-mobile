@@ -23,7 +23,7 @@ abstract class GradesConsultationRemoteDataSource {
   /// Calls the http://itpsm-api-host/api/evaluations/student/{studentId} endpoint.
   /// 
   /// Throws a [ServerException] for all error codes.
-  Future<List<StudentsEvaluationsModel>> getstudentsEvaluations(int studentId, int periodId, String token);
+  Future<List<StudentsEvaluationsModel>> getStudentsEvaluations(int studentId, int periodId, String token);
 }
 
 class GradesConsultationRemoteDataSourceImpl extends GradesConsultationRemoteDataSource {
@@ -65,7 +65,7 @@ class GradesConsultationRemoteDataSourceImpl extends GradesConsultationRemoteDat
   }
   
   @override
-  Future<List<StudentsEvaluationsModel>> getstudentsEvaluations(int studentId, int periodId, String token) async {
+  Future<List<StudentsEvaluationsModel>> getStudentsEvaluations(int studentId, int periodId, String token) async {
     http.Response response = await client.get(
       ItpsmUtils.getApiUri('$studentsEvaluationsPath/$studentId'),
       headers: {

@@ -21,7 +21,7 @@ class StudentsEvaluationsCubit extends Cubit<StudentsEvaluationsState> {
 
     logger.d("Sending evaluations/student request to $apiName");
 
-    final result = await repository.getStudentsEvaluations(authUser.systemReferenceId, authUser.token, periodId);
+    final result = await repository.getStudentsEvaluations(authUser.systemReferenceId, periodId, authUser.token);
 
     if(result.isRight()) {
       emit(state.copyWith(

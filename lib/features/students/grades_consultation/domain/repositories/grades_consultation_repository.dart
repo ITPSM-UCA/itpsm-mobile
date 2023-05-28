@@ -6,5 +6,5 @@ import '../../data/models/enrollment_model.dart';
 
 abstract class GradesConsultationRepository {
   Future<Either<Failure, List<EnrollmentModel>>> getStudentsEnrollments(int studentId, String token);
-  Future<Either<Failure, List<StudentsEvaluationsModel>>> getStudentsEvaluations(int studentId, String token, int periodId);
+  Future<Either<Failure, List<StudentsEvaluationsModel>>> getStudentsEvaluations(int studentId, int periodId, String token);
 }

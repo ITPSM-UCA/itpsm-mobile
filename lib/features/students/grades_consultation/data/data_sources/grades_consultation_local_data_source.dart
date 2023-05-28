@@ -47,7 +47,7 @@ class GradesConsultationLocalDataSourceImpl extends GradesConsultationLocalDataS
 
     if(jsonString != null) {
       List<EnrollmentModel> subjects = [];
-      final List<Map<String, dynamic>> jsonSubjects = json.decode(jsonString);
+      final List<Map<String, dynamic>> jsonSubjects = (json.decode(jsonString) as List).map((e) => e as Map<String, dynamic>).toList();
 
       for (var subject in jsonSubjects) {
         subjects.add(EnrollmentModel.fromJson(subject));
@@ -77,7 +77,7 @@ class GradesConsultationLocalDataSourceImpl extends GradesConsultationLocalDataS
 
     if(jsonString != null) {
       List<StudentsEvaluationsModel> evaluations = [];
-      final List<Map<String, dynamic>> jsonEvaluations = json.decode(jsonString);
+      final List<Map<String, dynamic>> jsonEvaluations = (json.decode(jsonString) as List).map((e) => e as Map<String, dynamic>).toList();
 
       for (var evaluation in jsonEvaluations) {
         evaluations.add(StudentsEvaluationsModel.fromJson(evaluation));

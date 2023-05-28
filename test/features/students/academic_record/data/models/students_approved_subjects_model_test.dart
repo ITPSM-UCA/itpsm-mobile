@@ -19,7 +19,7 @@ void main() {
       expect(dummyStdApdSubModel, isA<List<StudentsApprovedSubjects>>());
     });
 
-    group('AuthenticatedUserModel from JSON', () { 
+    group('StudentsCurriculaModel from JSON', () { 
       test('Should return a valid StudentsCurriculaModel', () async {
         List<StudentsApprovedSubjectsModel> fromJsonJsonModel = [];
         List<Map<String, dynamic>> jsonModel = ItpsmUtils.getAttributesArrayFromApiResponse(response);

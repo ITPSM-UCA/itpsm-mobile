@@ -1,11 +1,43 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:itpsm_mobile/core/utils/constants/constants.dart';
+import 'package:itpsm_mobile/features/authentication/data/models/authenticated_user_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../bloc/authentication_bloc.dart';
 import '../widgets/login_form.dart';
 
-class LoginScreen extends StatelessWidget {
-  // static const routeName = '/';
-
+class LoginScreen extends StatefulWidget {
+  static const String routeName = '/';
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  // bool _isInit = true;
+
+  void autoLogin(BuildContext context) async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    final userJson = sharedPreferences.getString(authenticatedUserKey);
+
+    if(userJson != null && context.mounted) {
+      context.read<AuthenticationBloc>().setAuthentication(AuthenticatedUserModel.fromJson(json.decode(userJson)));
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    
+    autoLogin(context);
+    // if(_isInit) {
+      // setState(() { _isInit = false; });
+    // }
+  }
 
   @override
   Widget build(BuildContext context) {

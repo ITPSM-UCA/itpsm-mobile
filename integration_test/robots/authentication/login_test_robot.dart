@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'test_robot.dart';
+import '../test_robot.dart';
 
 class LoginTestRobot extends TestRobot {
   static const String _psswdObligatoryErrorLabel = 'El ingreso de la contraseña es obligatorio.';
@@ -71,5 +71,18 @@ class LoginTestRobot extends TestRobot {
   Finder _findErrorLabel(String textLabel) {
     // Expect at least one widget with the following text
     return find.text(textLabel);
+  }
+
+  Future<void> login() async {
+    await waitAndSettle();
+
+    await typeIntoEmailField('mb@itpsm.edu.sv');
+    await typeIntoPasswordField('password');
+
+    await wait();
+
+    await tapSubmitButton();
+
+    await waitAndSettle();
   }
 }

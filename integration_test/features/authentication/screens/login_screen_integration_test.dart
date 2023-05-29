@@ -4,7 +4,7 @@ import 'package:integration_test/integration_test.dart';
 // ignore: library_prefixes
 import 'package:itpsm_mobile/main.dart' as itpsmMobile;
 
-import '../robots/login_test_robot.dart';
+import '../../../robots/authentication/login_test_robot.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();

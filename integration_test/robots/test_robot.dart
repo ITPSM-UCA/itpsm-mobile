@@ -17,6 +17,10 @@ class TestRobot {
     await tester.pump(pumpDuration);
   }
 
+  Future<void> waitFor(Duration duration) async {
+    await tester.pump(duration);
+  }
+
   String? get alertDescription {
     return tester.firstWidget<Text>(find.descendant(of: find.byType(AlertDialog), matching: find.byType(Text)).first).data;
   }

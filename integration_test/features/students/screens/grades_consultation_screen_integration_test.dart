@@ -5,7 +5,7 @@ import 'package:integration_test/integration_test.dart';
 import 'package:itpsm_mobile/main.dart' as itpsmMobile;
 
 import '../../../robots/authentication/login_test_robot.dart';
-import '../../../robots/students/academic_record_test_robot.dart';
+import '../../../robots/students/grades_consultation_test_robot.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -24,16 +24,16 @@ void main() {
     return LoginTestRobot(tester: tester, find: find);
   }
 
-  AcademicRecordTestRobot turnOnAcademicRecordTestRobot(WidgetTester tester, CommonFinders find) {
-    return AcademicRecordTestRobot(tester: tester, find: find);
+  GardesConsultationTestRobot turnOnGardesConsultationTestRobot(WidgetTester tester, CommonFinders find) {
+    return GardesConsultationTestRobot(tester: tester, find: find);
   }
 
-  group('AcademicRecordScreen integration tests', () {
-    testWidgets('AcademicRecordScreen initialized', (tester) async {
+  group('GardesConsultationScreen integration tests', () {
+    testWidgets('GardesConsultationScreen initialized', (tester) async {
       itpsmMobile.main();
 
       LoginTestRobot loginRobot = turnOnLoginRobot(tester, find);
-      AcademicRecordTestRobot academicRobot = turnOnAcademicRecordTestRobot(tester, find);
+      GardesConsultationTestRobot academicRobot = turnOnGardesConsultationTestRobot(tester, find);
 
       await loginRobot.login();
 
@@ -44,7 +44,7 @@ void main() {
       itpsmMobile.main();
 
       LoginTestRobot loginRobot = turnOnLoginRobot(tester, find);
-      AcademicRecordTestRobot academicRobot = turnOnAcademicRecordTestRobot(tester, find);
+      GardesConsultationTestRobot academicRobot = turnOnGardesConsultationTestRobot(tester, find);
 
       await loginRobot.login();
 
@@ -59,7 +59,7 @@ void main() {
       itpsmMobile.main();
 
       LoginTestRobot loginRobot = turnOnLoginRobot(tester, find);
-      AcademicRecordTestRobot academicRobot = turnOnAcademicRecordTestRobot(tester, find);
+      GardesConsultationTestRobot academicRobot = turnOnGardesConsultationTestRobot(tester, find);
 
       await loginRobot.login();
 
@@ -80,7 +80,7 @@ void main() {
       itpsmMobile.main();
 
       LoginTestRobot loginRobot = turnOnLoginRobot(tester, find);
-      AcademicRecordTestRobot academicRobot = turnOnAcademicRecordTestRobot(tester, find);
+      GardesConsultationTestRobot academicRobot = turnOnGardesConsultationTestRobot(tester, find);
 
       await loginRobot.login();
 
@@ -105,7 +105,7 @@ void main() {
       itpsmMobile.main();
 
       LoginTestRobot loginRobot = turnOnLoginRobot(tester, find);
-      AcademicRecordTestRobot academicRobot = turnOnAcademicRecordTestRobot(tester, find);
+      GardesConsultationTestRobot academicRobot = turnOnGardesConsultationTestRobot(tester, find);
 
       await loginRobot.login();
 

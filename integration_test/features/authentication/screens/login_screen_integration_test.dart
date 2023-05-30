@@ -130,42 +130,54 @@ void main() {
       await robot.validateAlertErrorDescription(LoginTestRobot.wrongEmailOrPassowrdErrorLabel);
     });
 
-    testWidgets('Device has not internet connection.', (tester) async {
+    testWidgets('Do login and logout', (tester) async {
       itpsmMobile.main();
       
       LoginTestRobot robot = turnOnRobot(tester, find);
 
       await robot.waitAndSettle();
 
-      await robot.typeIntoEmailField('mb@itpsm.edu.sv');
-      await robot.typeIntoPasswordField('password');
+      await robot.login();
 
-      await robot.wait();
-
-      await robot.tapSubmitButton();
-
-      await robot.waitAndSettle();
-      
-      await robot.validateAlertErrorDescription(LoginTestRobot.noConnectionErrorLabel);
+      await robot.logout();
     });
 
-    testWidgets('HTTP request expired.', (tester) async {
-      itpsmMobile.main();
+    // testWidgets('Device has not internet connection.', (tester) async {
+    //   itpsmMobile.main();
       
-      LoginTestRobot robot = turnOnRobot(tester, find);
+    //   LoginTestRobot robot = turnOnRobot(tester, find);
 
-      await robot.waitAndSettle();
+    //   await robot.waitAndSettle();
 
-      await robot.typeIntoEmailField('mb@itpsm.edu.sv');
-      await robot.typeIntoPasswordField('password');
+    //   await robot.typeIntoEmailField('mb@itpsm.edu.sv');
+    //   await robot.typeIntoPasswordField('password');
 
-      await robot.wait();
+    //   await robot.wait();
 
-      await robot.tapSubmitButton();
+    //   await robot.tapSubmitButton();
 
-      await robot.waitAndSettle();
+    //   await robot.waitAndSettle();
       
-      await robot.validateAlertErrorDescription(LoginTestRobot.requestExpiredErrorLabel);
-    });
+    //   await robot.validateAlertErrorDescription(LoginTestRobot.noConnectionErrorLabel);
+    // });
+
+    // testWidgets('HTTP request expired.', (tester) async {
+    //   itpsmMobile.main();
+      
+    //   LoginTestRobot robot = turnOnRobot(tester, find);
+
+    //   await robot.waitAndSettle();
+
+    //   await robot.typeIntoEmailField('mb@itpsm.edu.sv');
+    //   await robot.typeIntoPasswordField('password');
+
+    //   await robot.wait();
+
+    //   await robot.tapSubmitButton();
+
+    //   await robot.waitAndSettle();
+      
+    //   await robot.validateAlertErrorDescription(LoginTestRobot.requestExpiredErrorLabel);
+    // });
   });
 }

@@ -66,7 +66,7 @@ class _StudentsApprovedSubjectsState extends State<StudentsApprovedSubjects> {
     }
     else if(state.status == RequestStatus.failure 
       || (state.status == RequestStatus.loaded && state.subjects != null && state.subjects!.isEmpty)) {
-      _approvedSubjectsView = const SizedBox();
+      _approvedSubjectsView = const Center(child: Text('No se encontraron datos...'));
     }
     else {
       _approvedSubjects = [...state.subjects!];

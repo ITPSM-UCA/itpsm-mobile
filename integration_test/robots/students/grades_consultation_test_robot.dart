@@ -6,8 +6,8 @@ import 'package:itpsm_mobile/features/students/grades_consultation/presentation/
 
 import '../test_robot.dart';
 
-class GardesConsultationTestRobot extends TestRobot {
-  GardesConsultationTestRobot({required super.tester, required super.find});
+class GradesConsultationTestRobot extends TestRobot {
+  GradesConsultationTestRobot({required super.tester, required super.find});
 
   Finder get _enrollmentDropdown {
     return find.byWidgetPredicate((widget) => widget is DropdownButton).first;

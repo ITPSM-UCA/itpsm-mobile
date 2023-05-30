@@ -24,8 +24,8 @@ void main() {
     return LoginTestRobot(tester: tester, find: find);
   }
 
-  GardesConsultationTestRobot turnOnGardesConsultationTestRobot(WidgetTester tester, CommonFinders find) {
-    return GardesConsultationTestRobot(tester: tester, find: find);
+  GradesConsultationTestRobot turnOnGradesConsultationTestRobot(WidgetTester tester, CommonFinders find) {
+    return GradesConsultationTestRobot(tester: tester, find: find);
   }
 
   group('GardesConsultationScreen integration tests', () {
@@ -33,103 +33,103 @@ void main() {
       itpsmMobile.main();
 
       LoginTestRobot loginRobot = turnOnLoginRobot(tester, find);
-      GardesConsultationTestRobot academicRobot = turnOnGardesConsultationTestRobot(tester, find);
+      GradesConsultationTestRobot gradesRobot = turnOnGradesConsultationTestRobot(tester, find);
 
       await loginRobot.login();
 
-      await academicRobot.validateScreenInitialization();
+      await gradesRobot.validateScreenInitialization();
     });
 
     testWidgets('Enrollments drowpdown menu is loaded', (tester) async {
       itpsmMobile.main();
 
       LoginTestRobot loginRobot = turnOnLoginRobot(tester, find);
-      GardesConsultationTestRobot academicRobot = turnOnGardesConsultationTestRobot(tester, find);
+      GradesConsultationTestRobot gradesRobot = turnOnGradesConsultationTestRobot(tester, find);
 
       await loginRobot.login();
 
-      await academicRobot.validateScreenInitialization();
+      await gradesRobot.validateScreenInitialization();
 
-      await academicRobot.waitFor(const Duration(seconds: 1));
+      await gradesRobot.waitFor(const Duration(seconds: 1));
 
-      await academicRobot.validateEnrollmentsDropdownMenuIsLoaded();
+      await gradesRobot.validateEnrollmentsDropdownMenuIsLoaded();
     });
 
     testWidgets('Evaluations from selected enrollment are loaded', (tester) async {
       itpsmMobile.main();
 
       LoginTestRobot loginRobot = turnOnLoginRobot(tester, find);
-      GardesConsultationTestRobot academicRobot = turnOnGardesConsultationTestRobot(tester, find);
+      GradesConsultationTestRobot gradesRobot = turnOnGradesConsultationTestRobot(tester, find);
 
       await loginRobot.login();
 
-      await academicRobot.validateScreenInitialization();
+      await gradesRobot.validateScreenInitialization();
 
-      await academicRobot.waitFor(const Duration(seconds: 1));
+      await gradesRobot.waitFor(const Duration(seconds: 1));
 
-      await academicRobot.validateEnrollmentsDropdownMenuIsLoaded();
+      await gradesRobot.validateEnrollmentsDropdownMenuIsLoaded();
 
-      await academicRobot.selectLastEnrollment();
+      await gradesRobot.selectLastEnrollment();
 
-      await academicRobot.waitFor(const Duration(seconds: 1));
+      await gradesRobot.waitFor(const Duration(seconds: 1));
 
-      await academicRobot.validateSelectedEnrollmentsEvaluationsAreLoaded();
+      await gradesRobot.validateSelectedEnrollmentsEvaluationsAreLoaded();
     });
 
     testWidgets('Show at least one evaluation', (tester) async {
       itpsmMobile.main();
 
       LoginTestRobot loginRobot = turnOnLoginRobot(tester, find);
-      GardesConsultationTestRobot academicRobot = turnOnGardesConsultationTestRobot(tester, find);
+      GradesConsultationTestRobot gradesRobot = turnOnGradesConsultationTestRobot(tester, find);
 
       await loginRobot.login();
 
-      await academicRobot.validateScreenInitialization();
+      await gradesRobot.validateScreenInitialization();
 
-      await academicRobot.waitFor(const Duration(seconds: 1));
+      await gradesRobot.waitFor(const Duration(seconds: 1));
 
-      await academicRobot.validateEnrollmentsDropdownMenuIsLoaded();
+      await gradesRobot.validateEnrollmentsDropdownMenuIsLoaded();
 
-      await academicRobot.selectLastEnrollment();
+      await gradesRobot.selectLastEnrollment();
 
-      await academicRobot.waitFor(const Duration(seconds: 1));
+      await gradesRobot.waitFor(const Duration(seconds: 1));
 
-      await academicRobot.validateSelectedEnrollmentsEvaluationsAreLoaded();
+      await gradesRobot.validateSelectedEnrollmentsEvaluationsAreLoaded();
 
-      await academicRobot.expandFirstSubjectsEvauations();
+      await gradesRobot.expandFirstSubjectsEvauations();
 
-      await academicRobot.validateAtLeastOnveEvaluationIsShown();
+      await gradesRobot.validateAtLeastOnveEvaluationIsShown();
     });
 
     testWidgets('Refresh screen', (tester) async {
       itpsmMobile.main();
 
       LoginTestRobot loginRobot = turnOnLoginRobot(tester, find);
-      GardesConsultationTestRobot academicRobot = turnOnGardesConsultationTestRobot(tester, find);
+      GradesConsultationTestRobot gradesRobot = turnOnGradesConsultationTestRobot(tester, find);
 
       await loginRobot.login();
 
-      await academicRobot.validateScreenInitialization();
+      await gradesRobot.validateScreenInitialization();
 
       final handle = tester.ensureSemantics();
 
-      await academicRobot.waitFor(const Duration(seconds: 1));
+      await gradesRobot.waitFor(const Duration(seconds: 1));
 
-      await academicRobot.validateEnrollmentsDropdownMenuIsLoaded();
+      await gradesRobot.validateEnrollmentsDropdownMenuIsLoaded();
 
-      await academicRobot.selectLastEnrollment();
+      await gradesRobot.selectLastEnrollment();
 
-      await academicRobot.waitFor(const Duration(seconds: 1));
+      await gradesRobot.waitFor(const Duration(seconds: 1));
 
-      await academicRobot.validateSelectedEnrollmentsEvaluationsAreLoaded();
+      await gradesRobot.validateSelectedEnrollmentsEvaluationsAreLoaded();
 
-      await academicRobot.expandFirstSubjectsEvauations();
+      await gradesRobot.expandFirstSubjectsEvauations();
 
-      await academicRobot.validateAtLeastOnveEvaluationIsShown();
+      await gradesRobot.validateAtLeastOnveEvaluationIsShown();
 
-      await academicRobot.beginRefreshing();
+      await gradesRobot.beginRefreshing();
 
-      await academicRobot.validateSelectedEnrollmentsEvaluationsAreLoaded();
+      await gradesRobot.validateSelectedEnrollmentsEvaluationsAreLoaded();
 
       handle.dispose();
     });

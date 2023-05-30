@@ -52,7 +52,7 @@ class MainDrawerScreen extends StatelessWidget {
           )
         ),
         const SizedBox(height: 20),
-        ...authUser?.platformMenus.where((menu) => menu.name == academicRecord || menu.name == gradesConsultation).map((menu) {
+        ...authUser?.platformMenus.reversed.toList().where((menu) => menu.name == academicRecord || menu.name == gradesConsultation).map((menu) {
           return _buildMenuItem(
             menu.name,
             menu.icon,

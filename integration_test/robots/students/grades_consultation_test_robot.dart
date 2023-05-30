@@ -4,10 +4,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:itpsm_mobile/features/students/grades_consultation/presentation/widgets/evaluation_tile.dart';
 import 'package:itpsm_mobile/features/students/grades_consultation/presentation/widgets/subjects_evaluations.dart';
 
+import '../authentication/login_test_robot.dart';
 import '../test_robot.dart';
 
 class GradesConsultationTestRobot extends TestRobot {
-  GradesConsultationTestRobot({required super.tester, required super.find});
+  late final LoginTestRobot loginRobot;
+
+  GradesConsultationTestRobot({required super.tester, required super.find}) {
+    loginRobot = LoginTestRobot(tester: tester, find: find);
+  }
 
   Finder get _enrollmentDropdown {
     return find.byWidgetPredicate((widget) => widget is DropdownButton).first;

@@ -56,6 +56,7 @@ class StudentsApprovedSubjectsModel extends StudentsApprovedSubjects {
     // required this.periodId, 
     // required super.code, 
     required super.enrollment, 
+    required super.uv, 
     required this.periodYear, 
     required this.periodCode, 
     // required this.curriculumSubjectLabel, 
@@ -74,18 +75,6 @@ class StudentsApprovedSubjectsModel extends StudentsApprovedSubjects {
     // careerLabel: careerLabel, 
     teacherName: teacherName
   );
-
-  factory StudentsApprovedSubjectsModel.emptyDummy() {
-    return const StudentsApprovedSubjectsModel(
-      name: 'Preparación de bebidas',
-      isApproved: 1,
-      enrollment: 4,
-      finalScore: 9,
-      teacherName: 'Arthur Morgan',
-      periodCode: 1,
-      periodYear: 2023
-    );
-  }
 
   factory StudentsApprovedSubjectsModel.fromJson(Map<String, dynamic> json) => _$StudentsApprovedSubjectsModelFromJson(json);
 
@@ -106,6 +95,7 @@ class StudentsApprovedSubjectsModel extends StudentsApprovedSubjects {
     int? periodCode,
     String? teacherName,
     int? enrollment,
+    int? uv,
     String? name,
   }) {
     return StudentsApprovedSubjectsModel(
@@ -115,6 +105,7 @@ class StudentsApprovedSubjectsModel extends StudentsApprovedSubjects {
       periodCode: periodCode ?? this.periodCode,
       teacherName: teacherName ?? this.teacherName,
       enrollment: enrollment ?? super.enrollment,
+      uv: uv ?? super.uv,
       name: name ?? super.name
     );
   }

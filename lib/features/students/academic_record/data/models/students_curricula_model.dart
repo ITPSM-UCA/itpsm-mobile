@@ -34,10 +34,10 @@ class StudentsCurriculaModel extends StudentsCurricula {
   @JsonKey(name: 'cucrriculaname')
   // ignore: overridden_fields
   final String cucrriculaName;
-  // @override
-  // @JsonKey(name: 'uv_total')
-  // // ignore: overridden_fields
-  // final int uvTotal;
+  @override
+  @JsonKey(name: 'uv_total')
+  // ignore: overridden_fields
+  final int? uvTotal;
   
   const StudentsCurriculaModel({
     required super.cum, 
@@ -50,7 +50,7 @@ class StudentsCurriculaModel extends StudentsCurricula {
     required this.curriculumId, 
     required this.cucrriculaName, 
     required super.status, 
-    // required this.uvTotal
+    this.uvTotal
   }) : super(
     entryYear: entryYear, 
     graduationYear: graduationYear, 
@@ -59,7 +59,7 @@ class StudentsCurriculaModel extends StudentsCurricula {
     studentId: studentId,
     curriculumId: curriculumId,
     cucrriculaName: cucrriculaName,
-    // uvTotal: uvTotal
+    uvTotal: uvTotal
   );
 
   factory StudentsCurriculaModel.fromJson(Map<String, dynamic> json) => _$StudentsCurriculaModelFromJson(json);

@@ -10,7 +10,8 @@
 				"teachername": "Nickolas Brown",
 				"enrollment": 1,
 				"period_code": 3,
-				"period_year": 2022
+				"period_year": 2022,
+				"uv": 5
 			},
 			{
 				"name": "Procesos Constructivos para Viviendas",
@@ -19,7 +20,8 @@
 				"teachername": "Alison Erdman",
 				"enrollment": 4,
 				"period_code": 2,
-				"period_year": 2022
+				"period_year": 2022,
+				"uv": 5
 			}
 		]
 	},

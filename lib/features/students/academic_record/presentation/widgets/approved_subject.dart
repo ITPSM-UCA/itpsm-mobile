@@ -26,7 +26,7 @@ class ApprovedSubject extends StatelessWidget {
       ),
       title: Text(studentsApprovedSubject.name, overflow: TextOverflow.ellipsis),
       subtitle: Text(studentsApprovedSubject.teacherName),
-      trailing: Text('${studentsApprovedSubject.enrollment.toStringAsFixed(0)} UV'),
+      trailing: Text('${studentsApprovedSubject.uv.toStringAsFixed(0)} UV'),
     );
     // const edges = 10;
     // final theme = Theme.of(context);

@@ -9,6 +9,7 @@ abstract class StudentsApprovedSubjects extends Equatable {
   // final int periodId;
   // final int code;
   final int enrollment;
+  final int uv;
   // final int periodYear;
   // final int periodCode;
   // final String curriculumSubjectLabel;
@@ -26,6 +27,7 @@ abstract class StudentsApprovedSubjects extends Equatable {
     // required this.periodId, 
     // required this.code, 
     required this.enrollment, 
+    required this.uv,
     // required this.periodYear, 
     // required this.periodCode, 
     // required this.curriculumSubjectLabel, 

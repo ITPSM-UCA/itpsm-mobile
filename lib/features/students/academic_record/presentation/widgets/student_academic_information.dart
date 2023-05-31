@@ -131,7 +131,7 @@ class _StudentAcademicInformationState extends State<StudentAcademicInformation>
                           child: HorizontalIconedText(
                             icon: Icons.assignment_turned_in,
                             iconColor: theme.colorScheme.primary,
-                            text: '${studentsCurriculaState.studentsCurricula?.uv.toString() ?? defaultString} UV aprobadas'
+                            text: '${studentsCurriculaState.studentsCurricula?.uvTotal?.toString() ?? 0} UV aprobadas'
                           ),
                           // child: VerticalLabeledText(
                           //   label: 'UV aprobadas', 

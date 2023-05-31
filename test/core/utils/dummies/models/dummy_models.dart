@@ -65,7 +65,8 @@ const dummyStdApdSubModel = [
       teacherName: 'Nickolas Brown',
       enrollment: 1,
       periodCode: 3,
-      periodYear: 2022),
+      periodYear: 2022,
+      uv: 5),
   StudentsApprovedSubjectsModel(
       name: 'Procesos Constructivos para Viviendas',
       finalScore: 5.6,
@@ -73,7 +74,8 @@ const dummyStdApdSubModel = [
       teacherName: 'Alison Erdman',
       enrollment: 4,
       periodCode: 2,
-      periodYear: 2022)
+      periodYear: 2022,
+      uv: 5)
 ];
 
 final dummyStdEvsModel = [

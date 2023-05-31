@@ -20,12 +20,20 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   // bool _isInit = true;
 
+  bool isSessionStillValid(AuthenticatedUserModel authUser) {
+    return DateTime.parse(authUser.expiresAt).isAfter(DateTime.now());
+  }
+
   void autoLogin(BuildContext context) async {
     final sharedPreferences = await SharedPreferences.getInstance();
     final userJson = sharedPreferences.getString(authenticatedUserKey);
 
     if(userJson != null && context.mounted) {
-      context.read<AuthenticationBloc>().setAuthentication(AuthenticatedUserModel.fromJson(json.decode(userJson)));
+      final authUser = AuthenticatedUserModel.fromJson(json.decode(userJson));
+
+      if(isSessionStillValid(authUser)) {
+        context.read<AuthenticationBloc>().setAuthentication(authUser);
+      }
     }
   }
 

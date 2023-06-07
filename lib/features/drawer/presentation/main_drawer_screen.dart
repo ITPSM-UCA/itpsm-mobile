@@ -43,12 +43,22 @@ class MainDrawerScreen extends StatelessWidget {
           width: double.infinity,
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.all(20),
-          child: const Text(
-            'Workflow',
-            style: TextStyle(
-              fontWeight: FontWeight.w900,
-              fontSize: 30,
-            ),
+          child: Row(
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                height: 48,
+                child: Image.asset('assets/images/logos/logo-ITPSM-p.jpg', fit: BoxFit.cover)
+              ),
+              const SizedBox(width: 20),
+              const Text(
+                'ITPSM',
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 30,
+                )
+              )
+            ]
           )
         ),
         const SizedBox(height: 20),

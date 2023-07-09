@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 abstract class StudentsApprovedSubjects extends Equatable {
   final String name;
-  final double finalScore;
+  final double? finalScore;
   final int isApproved;
   // final int curriculumSubjectId;
   // final int periodId;
@@ -41,7 +41,6 @@ abstract class StudentsApprovedSubjects extends Equatable {
   @override
   List<Object> get props {
     return [
-      finalScore,
       isApproved,
       // curriculumSubjectId,
       // periodId,

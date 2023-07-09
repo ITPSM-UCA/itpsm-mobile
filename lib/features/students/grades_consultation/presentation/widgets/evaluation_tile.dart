@@ -12,7 +12,7 @@ class EvaluationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isApproved = evaluation.evaluationScore > 6;
+    final isApproved = (evaluation.evaluationScore ?? 0) > 6;
     final hasSubevaluations = evaluation.subevaluations != null && evaluation.subevaluations!.isNotEmpty;
 
     return Column(
@@ -24,7 +24,7 @@ class EvaluationTile extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: FittedBox(child: Text(
-                evaluation.evaluationScore.toStringAsFixed(1),
+                evaluation.evaluationScore?.toStringAsFixed(2) ?? "0",
                 style: TextStyle(
                   color: isApproved ?  Colors.lightGreenAccent : theme.colorScheme.error
                   // : theme.colorScheme.copyWith(error: Colors.redAccent).error

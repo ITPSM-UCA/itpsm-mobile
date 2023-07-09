@@ -36,7 +36,7 @@ class StudentsApprovedSubjectsDataTableSource extends AsyncDataTableSource {
           return DataRow(cells: [
             DataCell(Text(subject.name)),
             DataCell(Text(subject.teacherName)),
-            DataCell(Text(subject.finalScore.toStringAsFixed(1))),
+            DataCell(Text(subject.finalScore?.toStringAsFixed(2) ?? '0')),
             DataCell(Text(subject.isApprovedText)),
             DataCell(Text(subject.enrollment.toString()))
           ]);

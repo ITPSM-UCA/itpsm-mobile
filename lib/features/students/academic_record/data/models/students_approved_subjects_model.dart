@@ -10,7 +10,7 @@ class StudentsApprovedSubjectsModel extends StudentsApprovedSubjects {
   @override
   @JsonKey(name: 'final_score')
   // ignore: overridden_fields
-  final double finalScore;
+  final double? finalScore;
   @override
   @JsonKey(name: 'is_approved')
   // ignore: overridden_fields

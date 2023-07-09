@@ -60,7 +60,7 @@ class StudentsGradesTable extends StatelessWidget {
           nameHeader,
           DataCell(Text(DateFormat('dd/MM/yyyy').format(evaluation.date))),
           DataCell(Text(evaluation.percentage.toString())),
-          DataCell(Text(evaluation.evaluationScore.toStringAsFixed(2))),
+          DataCell(Text(evaluation.evaluationScore?.toStringAsFixed(2) ?? "0")),
         ]
       );
     }).toList();

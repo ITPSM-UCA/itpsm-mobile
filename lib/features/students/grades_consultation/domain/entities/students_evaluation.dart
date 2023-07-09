@@ -3,17 +3,17 @@ import 'package:equatable/equatable.dart';
 abstract class StudentsEvaluations extends Equatable {
   final int id;
   final String name;
-  final String description;
+  final String? description;
   final DateTime date;
   final int percentage;
   final int? principalId;
   final int sectionId;
   final int? status;
-  final double evaluationScore;
+  final double? evaluationScore;
   final int periodId;
   final int subjectId;
   final String subjectName;
-  final double subjectFinalScore;
+  final double? subjectFinalScore;
   final List<StudentsEvaluations>? subevaluations;
 
   const StudentsEvaluations({
@@ -34,5 +34,5 @@ abstract class StudentsEvaluations extends Equatable {
   });
 
   @override
-  List<Object> get props => [id, name, description, date, percentage, sectionId, evaluationScore, periodId, subjectId, subjectName, subjectFinalScore];
+  List<Object> get props => [id, name, date, percentage, sectionId, periodId, subjectId, subjectName];
 }

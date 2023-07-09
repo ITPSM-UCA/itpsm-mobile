@@ -64,7 +64,7 @@ class _StudentsGradesState extends State<StudentsGrades> {
                       )
                     ),
                     Text(
-                      evaluations[0].subjectFinalScore.toStringAsFixed(1),
+                      value[0].subjectFinalScore?.toStringAsFixed(2) ?? "0",
                       style: theme.textTheme.titleSmall
                     )
                   ],

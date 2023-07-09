@@ -89,6 +89,7 @@ class GradesConsultationRemoteDataSourceImpl extends GradesConsultationRemoteDat
     
     for (var evaluation in studentsEvaluations) {
       evaluations.add(StudentsEvaluationsModel.fromJson(evaluation));
+      logger.d('StudentsEvaluations response body: ${StudentsEvaluationsModel.fromJson(evaluation)}');
     }
 
     return evaluations.where((evaluation) => evaluation.periodId == periodId).toList();

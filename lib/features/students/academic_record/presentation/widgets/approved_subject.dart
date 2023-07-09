@@ -9,7 +9,7 @@ class ApprovedSubject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isApproved = studentsApprovedSubject.finalScore > 6;
+    final isApproved = (studentsApprovedSubject.finalScore ?? 0) > 6;
 
     return ListTile(
       leading: CircleAvatar(
@@ -17,7 +17,7 @@ class ApprovedSubject extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: FittedBox(child: Text(
-            studentsApprovedSubject.finalScore.toStringAsFixed(1),
+            studentsApprovedSubject.finalScore?.toStringAsFixed(2) ?? '0',
             style: TextStyle(
               color: isApproved ? Colors.greenAccent : theme.colorScheme.error
             ),

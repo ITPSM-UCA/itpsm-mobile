@@ -14,7 +14,7 @@ class StudentsEvaluationsModel extends StudentsEvaluations {
   @override
   @JsonKey(name: 'evaluation_score')
   // ignore: overridden_fields
-  final double evaluationScore;
+  final double? evaluationScore;
   @override
   @JsonKey(name: 'section_id')
   // ignore: overridden_fields
@@ -34,7 +34,7 @@ class StudentsEvaluationsModel extends StudentsEvaluations {
   @override
   @JsonKey(name: 'subject_final_core')
   // ignore: overridden_fields
-  final double subjectFinalScore;
+  final double? subjectFinalScore;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   // ignore: overridden_fields

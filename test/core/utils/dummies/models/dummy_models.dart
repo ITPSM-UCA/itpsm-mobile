@@ -44,15 +44,15 @@ const dummyAuthUserModel = AuthenticatedUserModel(
     ]);
 
 const dummyStdCurriculaModel = StudentsCurriculaModel(
-  uv: 0,
+  // uv: 0,
   cum: 8.9,
-  status: 'A',
+  // status: 'A',
   studentId: 1,
-  entryYear: 2017,
-  curriculumId: 2,
-  scholarshipId: 2,
-  graduationYear: 2022,
-  scholarshipRate: 150,
+  // entryYear: 2017,
+  // curriculumId: 2,
+  // scholarshipId: 2,
+  // graduationYear: 2022,
+  // scholarshipRate: 150,
   cucrriculaName:
       'Plan 2019-2020 de la carrera Técnico Superior en Hostelería y Turismo',
 );

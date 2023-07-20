@@ -47,6 +47,15 @@ class _StudentsGradesState extends State<StudentsGrades> {
     Map<String, List<StudentsEvaluationsModel>> groupedGrades = _groupEvaluationsBySubjectName(evaluations);
     
     groupedGrades.forEach((key, value) {
+      double finalScore = 0;
+
+      if(value[0].subjectFinalScore != null) {
+        finalScore = value[0].subjectFinalScore!;
+      }
+      else {
+        finalScore = calculateFinalScore(value);
+      }
+
       grades.add(
         Fieldset(
           child: Column(
@@ -64,7 +73,7 @@ class _StudentsGradesState extends State<StudentsGrades> {
                       )
                     ),
                     Text(
-                      value[0].subjectFinalScore?.toStringAsFixed(2) ?? "0",
+                      finalScore.toStringAsFixed(2),
                       style: theme.textTheme.titleSmall
                     )
                   ],
@@ -79,6 +88,17 @@ class _StudentsGradesState extends State<StudentsGrades> {
     return grades;
   }
   
+  double calculateFinalScore(List<StudentsEvaluationsModel> evaluations) {
+    double finalScore = 0;
+
+    for (var evaluation in evaluations) {
+      double score = evaluation.evaluationScore ?? 0;
+      finalScore += score * (evaluation.percentage / 100);
+    }
+
+    return finalScore;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<StudentsEvaluationsCubit, StudentsEvaluationsState>(

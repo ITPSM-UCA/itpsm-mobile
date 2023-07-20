@@ -3,28 +3,28 @@ import 'package:equatable/equatable.dart';
 
 abstract class StudentsCurricula extends Equatable {
   final double cum;
-  final int entryYear;
-  final int uv;
-  final int graduationYear;
-  final int scholarshipId;
-  final int scholarshipRate;
+  // final int entryYear;
+  // final int uv;
+  // final int graduationYear;
+  // final int scholarshipId;
+  // final int scholarshipRate;
   final int studentId;
-  final int curriculumId;
+  // final int curriculumId;
   final String cucrriculaName;
-  final String status;
+  // final String status;
   final int? uvTotal;
 
   const StudentsCurricula({
     required this.cum, 
-    required this.entryYear, 
-    required this.uv, 
-    required this.graduationYear, 
-    required this.scholarshipId, 
-    required this.scholarshipRate, 
+    // required this.entryYear, 
+    // required this.uv, 
+    // required this.graduationYear, 
+    // required this.scholarshipId, 
+    // required this.scholarshipRate, 
     required this.studentId, 
-    required this.curriculumId,
+    // required this.curriculumId,
     required this.cucrriculaName, 
-    required this.status, 
+    // required this.status, 
     this.uvTotal
   });
 
@@ -32,14 +32,15 @@ abstract class StudentsCurricula extends Equatable {
   List<Object> get props {
     return [
       cum,
-      entryYear,
-      uv,
-      graduationYear,
-      scholarshipId,
-      scholarshipRate,
+      // entryYear,
+      // uv,
+      // graduationYear,
+      // scholarshipId,
+      // scholarshipRate,
       studentId,
-      curriculumId,
-      status,
+      cucrriculaName
+      // curriculumId,
+      // status,
       // uvTotal,
     ];
   }

@@ -6,30 +6,30 @@ part 'students_curricula_model.g.dart';
 
 @JsonSerializable()
 class StudentsCurriculaModel extends StudentsCurricula {
-  @override
-  @JsonKey(name: 'entry_year')
-  // ignore: overridden_fields
-  final int entryYear;
-  @override
-  @JsonKey(name: 'graduation_year')
-  // ignore: overridden_fields
-  final int graduationYear;
-  @override
-  @JsonKey(name: 'scholarship_id')
-  // ignore: overridden_fields
-  final int scholarshipId;
-  @override
-  @JsonKey(name: 'scholarship_rate')
-  // ignore: overridden_fields
-  final int scholarshipRate;
+  // @override
+  // @JsonKey(name: 'entry_year')
+  // // ignore: overridden_fields
+  // final int entryYear;
+  // @override
+  // @JsonKey(name: 'graduation_year')
+  // // ignore: overridden_fields
+  // final int graduationYear;
+  // @override
+  // @JsonKey(name: 'scholarship_id')
+  // // ignore: overridden_fields
+  // final int scholarshipId;
+  // @override
+  // @JsonKey(name: 'scholarship_rate')
+  // // ignore: overridden_fields
+  // final int scholarshipRate;
   @override
   @JsonKey(name: 'student_id')
   // ignore: overridden_fields
   final int studentId;
-  @override
-  @JsonKey(name: 'curriculum_id')
-  // ignore: overridden_fields
-  final int curriculumId;
+  // @override
+  // @JsonKey(name: 'curriculum_id')
+  // // ignore: overridden_fields
+  // final int curriculumId;
   @override
   @JsonKey(name: 'cucrriculaname')
   // ignore: overridden_fields
@@ -41,23 +41,23 @@ class StudentsCurriculaModel extends StudentsCurricula {
   
   const StudentsCurriculaModel({
     required super.cum, 
-    required this.entryYear, 
-    required super.uv, 
-    required this.graduationYear, 
-    required this.scholarshipId, 
-    required this.scholarshipRate, 
+    // required this.entryYear, 
+    // required super.uv, 
+    // required this.graduationYear, 
+    // required this.scholarshipId, 
+    // required this.scholarshipRate, 
     required this.studentId, 
-    required this.curriculumId, 
+    // required this.curriculumId, 
     required this.cucrriculaName, 
-    required super.status, 
+    // required super.status, 
     this.uvTotal
   }) : super(
-    entryYear: entryYear, 
-    graduationYear: graduationYear, 
-    scholarshipId: scholarshipId,
-    scholarshipRate: scholarshipRate,
+    // entryYear: entryYear, 
+    // graduationYear: graduationYear, 
+    // scholarshipId: scholarshipId,
+    // scholarshipRate: scholarshipRate,
     studentId: studentId,
-    curriculumId: curriculumId,
+    // curriculumId: curriculumId,
     cucrriculaName: cucrriculaName,
     uvTotal: uvTotal
   );
@@ -66,12 +66,12 @@ class StudentsCurriculaModel extends StudentsCurricula {
 
   Map<String, dynamic> toJson() => _$StudentsCurriculaModelToJson(this);
 
-  String get statusText {
-    switch(status) {
-      case 'A': return 'Activo';
-      case 'G': return 'Graduado';
-      case 'I': 
-      default: return 'Inactivo';
-    }
-  }
+  // String get statusText {
+  //   switch(status) {
+  //     case 'A': return 'Activo';
+  //     case 'G': return 'Graduado';
+  //     case 'I': 
+  //     default: return 'Inactivo';
+  //   }
+  // }
 }

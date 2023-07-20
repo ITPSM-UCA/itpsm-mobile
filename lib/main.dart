@@ -21,6 +21,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'features/authentication/presentation/screens/login_screen.dart';
 
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port) => true; 
+  }
+}
+
 void main() async {
   FlutterError.onError = (details) {
     if(details.exception is FlutterError) {
@@ -28,12 +36,17 @@ void main() async {
       if (kReleaseMode) exit(1);
     }
   };
+  
   // Ensure the app does not allow landscape mode
   WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  HttpOverrides.global = MyHttpOverrides();
+
   runApp(const ItpsmMobile());
 }
 

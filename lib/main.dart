@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:itpsm_mobile/core/network/network_info.dart';
 import 'package:itpsm_mobile/core/utils/globals/globals.dart';
@@ -46,6 +47,15 @@ void main() async {
   ]);
 
   HttpOverrides.global = MyHttpOverrides();
+
+  // if(kReleaseMode) {
+  //   await dotenv.load(fileName: ".env.prd");
+  // }
+  // else {
+  //   await dotenv.load(fileName: ".env.dev");
+  // }
+
+  await dotenv.load(fileName: ".env");
 
   runApp(const ItpsmMobile());
 }

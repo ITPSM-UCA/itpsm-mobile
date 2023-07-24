@@ -44,7 +44,7 @@ const dummyAuthUserModel = AuthenticatedUserModel(
     ]);
 
 const dummyStdCurriculaModel = StudentsCurriculaModel(
-  // uv: 0,
+  uv: 42,
   cum: 8.9,
   // status: 'A',
   studentId: 1,

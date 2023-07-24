@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 abstract class StudentsCurricula extends Equatable {
   final double cum;
   // final int entryYear;
-  // final int uv;
+  final int? uv;
   // final int graduationYear;
   // final int scholarshipId;
   // final int scholarshipRate;
@@ -12,12 +12,12 @@ abstract class StudentsCurricula extends Equatable {
   // final int curriculumId;
   final String cucrriculaName;
   // final String status;
-  final int? uvTotal;
+  // final int? uvTotal;
 
   const StudentsCurricula({
     required this.cum, 
     // required this.entryYear, 
-    // required this.uv, 
+    required this.uv, 
     // required this.graduationYear, 
     // required this.scholarshipId, 
     // required this.scholarshipRate, 
@@ -25,7 +25,7 @@ abstract class StudentsCurricula extends Equatable {
     // required this.curriculumId,
     required this.cucrriculaName, 
     // required this.status, 
-    this.uvTotal
+    // this.uvTotal
   });
 
   @override

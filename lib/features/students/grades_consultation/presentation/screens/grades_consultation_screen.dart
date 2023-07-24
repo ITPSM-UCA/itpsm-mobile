@@ -16,7 +16,7 @@ import '../cubit/students_evaluations/students_evaluation_cubit.dart';
 import '../widgets/enrollments_dropdown_menu.dart';
 
 class GradesConsultationScreen extends StatelessWidget {
-  static const routeName = '/dashboard/notas';
+  static const routeName = 'dashboard/notas';
 
   const GradesConsultationScreen({super.key});
 

@@ -20,7 +20,7 @@ import '../../../../authentication/presentation/bloc/authentication_bloc.dart';
 import '../cubit/students_approved_subjects_cubit.dart';
 
 class AcademicRecordScreen extends StatelessWidget {
-  static const routeName = '/dashboard/historial-academico';
+  static const routeName = 'dashboard/historial-academico';
   
   const AcademicRecordScreen({super.key});
 
